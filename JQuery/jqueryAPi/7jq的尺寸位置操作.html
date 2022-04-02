@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        div {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 10px solid ;
+         
+            background-color: aqua;
+        }
+        .box3{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    <script src="../jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            // 1.尺寸
+            // (1)width() height()不包含padding border
+            $(".box1").width();//获得值
+            $(".box1").width(400);//修改值
+            // (2)innerWidth() innerHeight()包含padding
+            $(".box1").innerWidth();//获得值
+            // $(".box1").innerwidth(400);
+            // (2)outerWidth() outerHeight()包含padding border
+            $(".box1").outerWidth();//获得值
+            // $(".box1").outerwidth(true);//参数为true时，包含padding border margin
+   
+
+
+
+
+
+
+
+
+
+
+        //2.偏移
+    //   (1)距离文档位置offset().top offset().left 
+    console.log($(".box2").offset());
+$(".box2").offset();//获取的是一个对象
+$(".box2").offset({//距离文档的位置，与父盒子有没有定位
+    top:50,
+    left:50
+});
+
+// (2)距离到定位父级的偏移position()不能设置偏移
+$(".box2").position();
+
+// (3)scrollTop() scrollLeft();获取被卷去的头部和左侧 可以设置
+$(window).scroll(function(){
+    console.log( $(document).scrollTop());
+})
+
+$(document).scrollTop(1000);//把他设置为0直接返回顶部
+$("body,html").stop().animate({
+    scrollTop:0
+});//动画返回顶部，必须是元素
+
+
+})
+    </script>
+
+</head>
+
+<body>
+    <div class="box1">
+    </div>
+    <div class="box2">
+        <div class="box3"></div>
+    </div>
+</body>
+
+</html>

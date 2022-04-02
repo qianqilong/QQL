@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../js/bootstrap.min.css">
+    <script src="../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+     <!-- 文件选择框 -->
+     <input type="file" id="file1">
+     <!-- 文件上传按钮 -->
+     <button id="btnUpload">上传文件</button><br>
+<!-- 进度条 -->
+     <div class="progress" style="width: 500px; margin: 15px 10px;">
+        <div class="progress-bar progress-bar-striped active" style="width: 0%" id="proent">
+       
+        </div>
+      </div>
+     <img src="" alt="" width="800">
+    <script>
+        //4.以用FormDat对象上传文件
+// (1)验证是否上传了文件
+var btn=document.querySelector('#btnUpload');
+btn.addEventListener('click',function(){
+  var files=  document.querySelector('#file1').files;
+  if(files.length<=0){
+      alert('请选择要上传的文件');
+  }
+  var fd2=new FormData();
+  //将用选择的文件添加到ForDate中
+  fd2.append('avatar',files[0]);
+  var xhr3=new XMLHttpRequest();
+
+
+
+
+ //监听文件上传进度必须写在创建xhr的下面
+
+//  1.监听上传中的事件
+ xhr3.upload.onprogress =function(e){
+ if(e.lengthComputable){//判断上传进度是否是可计算的
+    // e.loaded已经上传的大小
+    // e.total文件的大小
+   var  pro=Math.ceil ((e.loaded/e.total)*100);
+ console.log(e.loaded);
+ console.log(e.total);
+   console.log(pro);
+ var jdt=document.querySelector('#proent');
+ jdt.setAttribute('style','width:'+pro+'%');
+ jdt.innerHTML=pro+'%';
+ }
+  }
+
+//   2.监听上传成功的事件
+xhr3.upload.onload=function(){
+$('#proent').removeClass().addClass('progress-bar progress-bar-danger');
+}
+
+
+
+
+
+  xhr3.open('POST','http://www.liulongbin.top:3006/api/upload/avatar');
+  xhr3.send(fd2);
+  xhr3.onreadystatechange=function(){
+      if(xhr3.readyState===4&&xhr3.status==200){
+          var data=JSON.parse(xhr3.responseText);
+         if(data.status==200){
+             document.querySelector('img').src='http://www.liulongbin.top:3006'+data.url;
+             
+         }else{
+             alert('图片上传失败');
+         }
+      }
+  }
+
+ 
+      
+  
+})
+    </script>
+</body>
+</html>

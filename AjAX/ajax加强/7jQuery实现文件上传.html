@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.6.0.js" ></script>
+</head>
+<body>
+  <input type="file"> 
+  <button>上传文件</button> <br>
+ <img src="" alt="">
+
+ <div class="id"></div>
+  <script>
+      $(function(){
+          //自 jQuery 版本 1.8 起，该方法只被附加到文档。
+        $(document).ajaxStart(function(){//ajax请求被发起了
+     $('.id').show(slow);
+
+})
+  $(document).ajaxStop(function(){//ajax请求完成
+    $('.id').hide(slow);
+  })
+
+
+
+      })
+
+
+
+
+      $('button').on('click',function(){
+          var files=$('input')[0].files;
+          if(files.length<=0){
+              alert('请选择文件后上传');
+          }
+          var fa=new FormData();
+          fa.append('avatar',files[0]);
+          $.ajax({
+              method:'POST',
+              url:'http://www.liulongbin.top:3006/api/upload/avatar',
+              data:fa,
+              contentType:false,//不修改 contentType属性
+              processData:false,//不对FormData数据进行url编码
+              success:function(res){
+                  console.log(res);
+               $('img').prop('src','http://www.liulongbin.top:3006'+res.url);
+              }
+          })
+      })
+  </script>
+</body>
+</html>

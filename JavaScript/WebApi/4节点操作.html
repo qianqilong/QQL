@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="qrCode"></div>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="box1">
+    </div>
+    <span></span>
+    <ul class="ul">
+    </ul>
+    <ul class="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <button>删除</button>
+    <ul class="ul3">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <button class="btn2">write添加元素</button>
+    <button class="btn3">innerHTML添加元素</button>
+    <div class="div3"></div>
+    <button class="btn4">createElement添加元素</button>
+    <div class="div4"></div>
+<script>
+    // 节点操作 父兄孩 元素节点 nodeType 1 属性节点 nodetype 2 
+    // 1.节点层级
+// (1)父级节点parentNode返回最近的父节点
+var qrCode=document.querySelector('.qrCode');
+console.log(qrCode.parentNode);
+// (2)子级节点childNodes 如果只要元素节点，要处理
+var ul=document.querySelector('ul');
+console.log(ul.childNodes);
+// (3)子元素节点 只获取元素节点
+console.log(ul.children);
+// (4)子节点定位 获取只节点a. firstChild lastChild 包含文本节点
+// b. firstElementChild lastElementChild(兼容性不好)
+console.log(ul.firstElementChild);
+console.log(ul.lastElementChild);
+//c. 实际开发中是用ul.children[数字]
+// (5)a.兄弟节点nextSibling previousSibling 包含文本节点
+// b. nextElementSibling  previousElementSibling 元素节点(兼容性不好)
+
+
+
+
+
+
+// 2.(1)创建节点createElement
+var li= document.createElement('li');
+// (2)添加节点node.appendChild 后面追加
+var ul1=document.querySelector('.ul');
+ul1.appendChild(li);
+var li1=ul1.children;
+li1[0].innerHTML='5';
+// (2)node.insertBefore
+var li2= document.createElement('li');
+ul.insertBefore(li2,ul.children[0]);
+ul.children[0].innerHTML='我是添加的';
+
+
+
+
+
+
+
+// 3.删除节点node.removeChild(ul2.children[0]);必须是父节点发起删除
+
+ var ul2=document.querySelector('.ul1');
+ var btn=document.querySelector('button');
+ btn.onclick=function(){
+     if(ul2.children.length==0){
+         this.disabled=true;
+     }else
+    ul2.removeChild(ul2.children[0]);
+ }
+// ul2.removeChild(ul2.children[0]);
+
+
+
+
+
+// 4.克隆节点node.cloneNode() false或不写浅拷贝 true深拷贝
+var ul3=document.querySelector('.ul3');
+var li3=ul3.children[0].cloneNode(true);
+ul3.appendChild(li3);
+
+
+
+
+// 5三种创建元素区别
+// (1)document.write()页面重汇
+var btn2=document.querySelector('.btn2');
+btn2.onclick =function(){
+    document.write('<div>123<div>')
+}
+// (2)innerHTML();
+var btn3=document.querySelector('.btn3');
+var div3=document.querySelector('.div3');
+btn3.onclick=function(){
+         for(var i=0;i<=50;i++){
+    div3.innerHTML+="<a href='#'>111</a>";//效率高(不要拼接字符串，用数组)
+         }
+}
+// (2)createElement;
+var btn4=document.querySelector('.btn4');
+var div4=document.querySelector('.div4');
+btn4.onclick=function(){
+        for(var i=0;i<=50;i++){
+            var a=document.createElement('li');
+           div4.appendChild(a);
+         }
+}
+</script>
+</body>
+</html>

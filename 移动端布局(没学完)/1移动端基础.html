@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,
+    initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" >
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 400px;
+           background: url(../img/dog.jpg) no-repeat;
+           background-size: contain;
+           /* 50%父盒子的一半 
+           cover完全覆盖
+          contain宽度或高度到盒子边就不会拉伸，
+          精灵图等比例缩放
+           */
+        }
+        img:nth-child(1){
+            width: 50px;
+            height: 50px;
+        }
+    .box{
+        width: 50px;
+        height: 50px;
+        border: 1px solid red;
+        background: url(../img/images/apple100.jpg) ;
+        background-size: 50px 50px;
+    }
+    .box1{
+        /* 盒子模型 */
+        box-sizing: border-box;
+        /* 变成css3的盒子模型
+        不会被撑大 */
+    }
+
+    /* 单独页面开发
+    流式布局
+    flex布局
+    less+rem
+    混合布局
+    响应式页面开发 */
+
+   img, a{
+        -webkit-tap-highlight-color: transparent;
+        /* 禁止长按出现菜单栏 */
+        -webkit-touch-callout: none;
+    }
+    input{
+        -webkit-appearance: none;
+        /* 去掉默认外观效果 */
+    }
+    </style>
+</head>
+<body>
+    <!-- 视口viewport -->
+<!-- 布局视口 layout viewport -->
+<!-- 视觉视口 visual viewport -->
+<!-- 理想视口 ideal viewport
+     <meta name="viewport" content="width=device-width,user-scalable=no,
+    initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" >
+meat视口标签
+-->
+<!-- 物理像素分辨率，物理像素比开发中1px与物理像素比值 -->
+<!-- 多倍图
+100*100缩小2倍，然后在像素比放大，
+-->
+<img src="../img/images/apple100.jpg" alt="">
+<img src="../img/images/apple50(1).jpg" alt="">
+<div></div>
+<div class="box"></div>
+<a href="">黑马</a>
+<input type="button" value="111">
+</body>
+</html>

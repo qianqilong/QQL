@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+       .div1{
+           width: 200px;
+           height: 200px;
+           background-color: transparent;
+           /* transparent透明色 */
+           background-image: url(../../图片/logo.png);
+           /* 背景图片方便控制位置 */
+           background-repeat: no-repeat;
+           /* no-repeat不平铺，repeat-xX轴平铺 */
+           background-position:center center ;
+           /* 控制图片的位置 top上 down下
+           写了一个方位，第二个是居中*/
+           background-attachment:scroll ;
+           /* 背景图像附着scroll滚动，fixed固定的*/
+           /* background: 背景颜色，背景图片地址，背景平铺，背景图像附着，背景图片位置; */
+           background: rgba(0, 0, 0, 0.7);
+           /* 背景半透明 alpha为半透明属性值0~1之间 */
+       }
+      h3{
+          width: 118px;
+          height: 40px;
+          font-size: 14px;
+          font-weight: 400;
+line-height: 40px;
+background-image: url(img/Snipaste_2022-02-25_21-32-15.png);
+background-repeat: no-repeat;
+background-position: left center;
+          display: block;
+          text-indent: 2em;
+      }
+h3:hover{
+   color: green;
+}
+      body{
+          background-image: url(img/16455174529259.jpg);
+          background-repeat: no-repeat;
+          background-position: center 40px;
+          /* 可以设置精准单位20px 50px */
+
+      }
+   </style>
+</head>
+<body>
+    <div class="div1"></div>
+    <h3>
+        成长守护平台
+    </h3>
+</body>
+</html>

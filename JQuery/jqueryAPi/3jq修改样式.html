@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      div{
+          float: left;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            transition: all 0.5s;
+        }
+        .boxchange{
+            background-color: black;
+        }
+        .box1change{
+            background-color: red;
+            transform: rotate(360deg);
+        }
+    </style>
+   <script src="../jquery-3.6.0.js"></script>
+  
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script>
+        $(function(){
+            // 1.写属性名返回属性值
+            console.log($(".box1").css("width"));
+            // 2.修改
+            // $(".box1").css("width","300px");
+            $(".box1").css("width",300);
+            // 以对象形式修改不用加“,不是数字要加引号，
+            $(".box1").css({
+            width:400,
+            height:500,
+            // backgroundColor:"red" 这个优先级高
+            })
+
+
+
+
+            // 调用类名(不会影响其他类名，className会影响)
+            // (1)添加类
+     
+          $(".box1").addClass("boxchange");
+    
+// (2)移除类
+      $(".box1").click(function(){
+          $(this).removeClass("boxchange");
+      });
+  // (3)切换类(添加类，移除类)
+      $(".box2").click(function(){
+          $(this).toggleClass("box1change");//类名不要加点
+      });
+        })
+      
+
+
+       </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+  //Array数组
+//   new arr=new Array();
+  var arr=[1,2,4,9,7,6,8,5,3];
+  var max=0;
+  arr.length=15;
+  arr[12]=22;
+  for(var i=0;i<arr.length;i++){
+  if(max<arr[i])max=arr[i];
+  }
+  
+console.log(max);
+
+
+var arr1=[1,12,212,2,32,4,5,6];
+var newarr=[];
+for(var i=0;i<arr1.length;i++){
+    if(arr1[i]>10)newarr[newarr.length]=arr1[i];
+}
+console.log(newarr);
+
+
+// 数组去重
+var arr2 = [1, 1, 8, 8, 12, 12, 15, 15, 16, 16];
+
+function unlink(arr2) {
+    for (var i = 0; i < arr2.length; i++) {    // 首次遍历数组
+        for (var j = i + 1; j < arr2.length; j++) {   // 再次遍历数组
+            if (arr2[i] == arr2[j]) {          // 判断连个值是否相等
+                arr2.splice(j, 1);           // 相等删除后者
+                j--;
+            }
+        }
+    }
+    return arr
+}
+console.log(unlink(arr));
+
+
+var arr3 = [1,1,8,8,12,12,15,15,16,16];
+function unique (arr3) {
+  return Array.from(new Set(arr3))
+}
+
+console.log(unique(arr3))
+ //[1,8,12,15,16]
+
+
+ //冒泡排序
+ var arr4=[7,9,5,2,6,3,1,8];
+ for(var i=0;i<arr4.length;i++){
+     for(var j=i+1;j<arr4.length;j++){
+         if(arr4[i]>arr4[j]){
+             var temp=arr4[i];
+             arr4[i]=arr4[j];
+             arr4[j]=temp;
+         }
+     }
+ }
+ console.log(arr4)
+// arr.length=10;可以修改数组长度
+
+
+
+
+
+
+
+
+
+
+       // function 函数名(形参){
+        //     函数体
+        // }
+        //  函数名(实参)
+        function add( a,b){
+            // console.log(a+b);
+            return a+b;
+        }
+        add(2,5);
+      console.log(add(2,5));
+
+      //arguments
+      function fn(){
+          console.log(arguments);//存储所有传过来的实参 伪数组，没有数组的一些方法
+
+      }
+        
+      function getMax(){
+          var max=arguments[0];
+          for(var i=0;i<arguments.length;i++){
+              if(arguments[i]>max) {
+                  max=arguments[i];
+              }
+          }
+          return max;
+      }
+      getMax(1,5,9,44,88);
+
+    //   js es6后才有块级作用域
+
+
+
+    // 预解析-> 代码执行
+    // var function 提升到当前作用域的最前面
+    // 1.变量提升(变量声明提升，赋值不提升)，函数表达式是赋值不提升
+    console.log(sa);//输出undef
+    var sa=10;
+    // 2.函数提升 函数申明提升
+//案例1
+var num=10;
+fun();
+
+function fun () {
+    console.log(num);
+    var num=20;
+}
+//相当于
+var num;
+function fun(){
+    var num;
+    console.log(num);//输出undef
+    num=20;
+}
+num=10;
+fun();
+//案例2
+function f1(){
+    var a=b=c=9;//var只声明了a   bc没有声明当全局变量;
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+console.log(a);//报错
+    console.log(b);
+    console.log(c);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

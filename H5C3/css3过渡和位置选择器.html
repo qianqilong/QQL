@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?tbhfh0');
+  src:  url('fonts/icomoon.eot?tbhfh0#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?tbhfh0') format('truetype'),
+    url('fonts/icomoon.woff?tbhfh0') format('woff'),
+    url('fonts/icomoon.svg?tbhfh0#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+input[value]{
+    /* 选择有value属性的或者选择属性值 */
+    color: aqua;
+    border-radius: 12px;
+}
+input[type="password"]{
+    background-color: aqua;
+}
+
+
+ul li:first-child{
+/* 结构伪类选择器，选择第一个孩子 */
+background-color: pink;
+}
+ul li:last-child{
+    background-color: aqua;
+}
+ul li:nth-child(2){
+/* 第二个孩子 */
+background-color: black;
+}
+ul li:nth-child(even){
+    /* even偶数盒子,odd奇数盒子
+    n自加，选择所要孩子，2n偶数，2n+1奇数 */
+}
+
+ul li:nth-of-type(3){
+background-color: blue;
+/* 区别：会把所要的孩子排序，先看序号nth-child 之后看与前面是否匹配 */
+/* nth-of-type会吧指定元素的孩子排序，再找序号 */
+}
+
+.div{
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+}
+.div::before{
+    content: '我';
+    /* 必须有content属性 权重低和标签选择器一样是1 */
+
+    display: inline-block;
+    background-color: aqua;
+    height: 100%;
+}
+/* 伪元素选择器可以通过css创建标签 */
+/* ::after在大盒子的后面
+::before在元素前插入内容 
+两个必须要有content属性
+*/
+.div2{
+    position: relative;
+    width: 200px;
+    height: 35px;
+    border: 1px solid red;
+}
+.div2::after{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: 'icomoon';
+content: '\e951';
+color: red;
+
+
+}
+
+.clearfix:after{
+            /* ********** 重要 */
+              /*3.overflow: hidden; */
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .clearfix{
+            
+            *zoom:1;
+        }
+        .claearfix::before{
+            content: "";
+            display: table;
+            /* 4.双伪元素清除浮动
+              */
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        .clearfix{
+            *zoom:1;
+        }
+        .clear{
+            /* 1.额外标签法 clear:both麻烦 */
+            clear:both;
+        }
+.div3{
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    background-color: red;
+    border: 10px solid black;
+
+}
+.div4{
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    background-color: red;
+    border: 10px solid black;
+    box-sizing: border-box;
+    /* 这个属性不会让盒子被撑大 */
+}
+/* 防止撑大盒子 */
+img{
+    filter: blur(6px);
+    /* 图片模糊效果 */
+}
+.div5{
+    width: 300px;
+    height: 200px;
+    background-color: aqua;
+}
+.div6{
+    /* css3 calc函数 可以加减乘除 */
+    width: calc(100%-30px);
+    height: 20px;
+    background-color: red;
+
+}
+.div7{
+    /* css3过渡(谁变化给谁加)
+     transition: 
+     1.属性(宽度高度，背景)
+     2.花费时间
+     3.运动曲线(ease)
+     4.延时
+     */
+     width: 200px;
+     height: 100px;
+     background-color: pink;
+    /* transition: width 1s ,height 1s; */
+transition: all 1s;
+}
+.div7:hover{
+    width: 400px;
+    height: 200px;
+}
+    </style>
+</head>
+<body>
+    <!-- 属性选择器 -->
+    <input type="text" value="1" >
+    <input type="password" >
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="div"></div>
+    <div class="div2"></div>
+<div class="div3"></div>
+<div class="div4"></div>
+<img src="img/a.png" alt="">
+<!-- css3 calc函数 -->
+<div class="div5">
+    <div class="div6"></div>
+</div>
+<div class="div7"></div>
+</body>
+</html>

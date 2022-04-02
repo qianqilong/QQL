@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.0.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .w {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .nav {
+            margin: auto;
+            height: 47px;
+            width: 100%;
+            background-color: #96b97d;
+        }
+
+        .nav ul {
+            width: 2000px;
+        }
+
+        .nav>ul li {
+            float: left;
+            list-style: none;
+            line-height: 47px;
+            margin-left: 25px;
+            color: #fff;
+        }
+
+        .nav>ul li:nth-child(1) {
+            margin-left: 170px;
+        }
+
+
+
+
+
+        .nav_con {
+            float: left;
+            width: 250px;
+            height: 1000px;
+            margin-left: 170px;
+            border: 0.5px solid #ccc;
+
+        }
+
+        .nav_con .item ul {
+            width: 220px;
+
+        }
+
+        .nav_con .item li {
+            position: relative;
+            height: 40px;
+            width: 220px;
+            line-height: 40px;
+            padding-left: 15px;
+            margin-left: 12px;
+            border-bottom: 1px solid #e9e9e9;
+            background-color: #f6f4f0;
+            transition: all 0.5s;
+
+        }
+
+        .nav_con .item li button:nth-child(odd) {
+            position: absolute;
+            right: 10px;
+            top: 10px
+        }
+
+        .nav_con .item li button:nth-child(even) {
+            position: absolute;
+            right: 45px;
+            top: 10px
+        }
+
+        .nav_con .item li input {
+            position: absolute;
+            left: 0;
+
+            height: 40px;
+            width: 220px;
+        }
+
+        .nav_con .item li:hover {
+            transform: scale(1.1);
+            font-weight: 700;
+        }
+
+        .nav_con .item li:nth-child(1) {
+            padding-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <head>
+        <div class="logo">
+            <img src="" alt="">
+        </div>
+    </head>
+
+    <!-- 导航栏部分 -->
+    <nav class="nav">
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        </div>
+        <div class="nav_con">
+            <div class="item" style="display: block;">
+                <ul>
+                    <li>HTML教程</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </div>
+
+    </nav>
+
+
+    <!-- 水平导航模块 -->
+
+
+    <script>
+        var navigation = [
+            {
+                nav_id: 1,
+                nav_name: '首页',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 2,
+                nav_name: 'HTML',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 3,
+                nav_name: 'CSS',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 4,
+                nav_name: 'JAVASCRIPT',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 5,
+                nav_name: 'VUE',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 6,
+                nav_name: 'BOOTSTRAP',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 7,
+                nav_name: 'NODEJS',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 8,
+                nav_name: ' PYTHON3',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 9,
+                nav_name: ' PYTHON2',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 10,
+                nav_name: 'JAVA',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 11,
+                nav_name: 'C',
+                nav_url: '#'
+            }, {
+                nav_id: 12,
+                nav_name: 'C++',
+                nav_url: '#'
+            }
+
+            , {
+                nav_id: 1,
+                nav_name: ' C#',
+                nav_url: '#'
+            }
+            , {
+                nav_id: 1,
+                nav_name: 'GO',
+                nav_url: '#'
+            }, {
+                nav_id: 1,
+                nav_name: 'SQL',
+                nav_url: '#'
+            }, {
+                nav_id: 1,
+                nav_name: 'LIUNX',
+                nav_url: '#'
+            }, {
+                nav_id: 1,
+                nav_name: '本地标签',
+                nav_url: '#'
+            }
+        ];
+
+        var nav_li = document.querySelector('.nav').querySelector('ul').querySelectorAll('li');
+        for (var i = 0; i < navigation.length; i++) {
+            nav_li[i].innerHTML = navigation[i].nav_name;
+        }
+        var divs = document.querySelector('.nav_con').querySelectorAll('div');
+        for (var i = 0; i < nav_li.length; i++) {
+            //把每个导航栏设置index
+            nav_li[i].setAttribute('index', i);
+            nav_li[i].addEventListener('click', function () {
+                for (var j = 0; j < nav_li.length; j++) {
+                    nav_li[j].setAttribute('class', '');
+                }
+                var index = this.getAttribute('index');
+                for (var i = 0; i < divs.length; i++) {
+                    divs[i].style.display = 'none';
+                }
+                divs[index].style.display = 'block';
+            });
+        }
+
+
+        var nav_con = document.querySelector('.nav_con').querySelectorAll('li');
+        for (var i = 0; i < nav_con.length; i++) {
+            nav_con[i].addEventListener('click', function () {
+
+                for (var j = 0; j < nav_con.length; j++) {
+                    nav_con[j].style.backgroundColor = '';
+                }
+                this.style.backgroundColor = '#96b97d';
+
+            })
+        }
+
+
+
+
+
+
+
+
+        // 添加节流阀
+        var flag = true;
+
+
+
+
+
+
+
+
+        //  修改菜单栏模块
+        $('.item li').on('click', function () {
+            var dthis = this;
+            //   获取对点击的索引号
+            var index = $(this).index();
+            // console.log(index);
+            $(this).siblings().children().remove("button").show(function () {
+                flag = true;
+            });
+            // 点击元素创建对应的删除按钮和修改按钮
+            var btnremove = $(" <button id='sx'>删除</button>");
+            var btnmodifyThe = $(" <button id='xg'>修改</button>");
+            if (flag) {
+                $(this).append(btnremove);
+                $(this).append(btnmodifyThe);
+                flag = false;
+            }
+            // 删除按钮添加的事件
+            $(this).on('click', '#sx', function () {
+                $('#sx').parent().remove().hide(function () {
+                    flag = true;
+                });
+            });
+
+
+
+
+
+
+
+            //修改按钮添加修改事件
+            $(this).on('click', '#xg', function () {
+                // 2.获取父元素里li的数据
+                var txt = $('#xg ').parent().html();//一个字符串
+                txt = txt.split('<');//获取<号前面的数据
+                //   1.在修改按钮的父级元素里添加input元素并隐藏其li里面的元素
+                var input = $('<input type="text" id="txt">');
+                $('#xg').parent().append(input);
+                //把原来li里面的元素加入表单中
+                $(dthis).find('input').val(txt[0]);
+
+            });
+             
+
+
+
+
+
+            //添加键盘弹起事件
+          $(this).on('keyup','input',function(){
+            //获取键盘上输入的数据
+            var txt=$('input').val();
+            console.log(txt);
+           $(dthis).text(txt);
+           flag = true;
+          });
+
+
+
+
+
+            //添加鼠标失去焦点事件
+            $(this).on('blur', '#txt', function () {
+                $('#txt').remove();
+            
+            });
+
+
+
+
+        })
+
+    </script>
+</body>
+
+</html>

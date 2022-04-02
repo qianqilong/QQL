@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form1">
+        <input type="text" name="user" autocomplete="off"><br>
+        <!-- autocomplete="off"z阻止表单的默认填充行为 -->
+        <input type="password" name="mm">
+        <button type="submit">提交</button>
+    </form>
+    <!-- 文件选择框 -->
+    <input type="file" id="file1">
+   <!-- 文件上传按钮 -->
+   <button id="btnUpload">上传文件</button><br>
+   <img src="" alt="" width="800">
+    <script>
+    // 可设置http请求的时限
+    // 可以用FormDat对象管理表单数据
+    // 可以上传文件
+    // 可以获得传输数据的进度
+
+
+
+   
+     var xhr=new XMLHttpRequest();
+      // 1.timeout设置请求时限
+     xhr.timeout=30;
+      xhr.ontimeout=function(){//超时回调函数
+          console.log('请求超时了');
+      }
+
+     xhr.open('GET','http://www.liulongbin.top:3006/api/getbooks');
+     xhr.send();
+    
+
+     xhr.onreadystatechange=function(){
+         if(xhr.readyState===4&&xhr.status===200){
+       console.log(xhr.responseText);
+         }
+     }
+
+
+
+     //2.以用FormDat对象管理表单数据
+     
+           var fd=new FormData();
+           fd.append('uname','zs');
+           fd.append('upaw','123456');
+
+           var xhr=new XMLHttpRequest();
+           xhr.open('POST','http://www.liulongbin.top:3006/api/formdata');
+           xhr.send(fd);
+           xhr.onreadystatechange=function(){
+               if(xhr.readyState===4&&xhr.status===200){
+                   console.log(JSON.parse(xhr.responseText));
+               }
+           }
+
+// 3.以用FormDat对象获取网页表单的值
+var form=document.querySelector('#form1');
+form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    var fd1=new FormData(form);
+    var xhr2=new XMLHttpRequest();
+    xhr2.open('POST','http://www.liulongbin.top:3006/api/formdata');
+    xhr2.send(fd1);
+    xhr2.onreadystatechange=function(){
+        if(xhr2.readyState===4&&xhr2.status===200){
+                   console.log(JSON.parse(xhr2.responseText));
+               }
+    }
+
+})
+
+//4.以用FormDat对象上传文件
+// (1)验证是否上传了文件
+var btn=document.querySelector('#btnUpload');
+btn.addEventListener('click',function(){
+  var files=  document.querySelector('#file1').files;
+  if(files.length<=0){
+      alert('请选择要上传的文件');
+  }
+  var fd2=new FormData();
+  //将用选择的文件添加到ForDate中
+  fd2.append('avatar',files[0]);
+  var xhr3=new XMLHttpRequest();
+  xhr3.open('POST','http://www.liulongbin.top:3006/api/upload/avatar');
+  xhr3.send(fd2);
+  xhr3.onreadystatechange=function(){
+      if(xhr3.readyState===4&&xhr3.status==200){
+          var data=JSON.parse(xhr3.responseText);
+         if(data.status==200){
+             document.querySelector('img').src='http://www.liulongbin.top:3006'+data.url;
+             
+         }else{
+             alert('图片上传失败');
+         }
+      }
+  }
+
+  //监听文件上传进度
+  xhr3.upload.onprogress =function(e){
+ if(e.lengthComputable){//判断上传进度是否是可计算的
+   var  pro=Math.ceil ((e.loaded/e.total)*100);
+   console.log(e.loaded);
+   console.log(pro);
+
+ }
+  }
+      
+  
+})
+    </script>
+</body>
+</html>

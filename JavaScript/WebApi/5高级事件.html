@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 10000px;
+        }
+        .div6{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .div7{
+            width: 100px;
+            height: 100px;
+            background-color:aqua ;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">传统方法</button>
+    <button class="btn2">监听方法</button>
+    <div class="div1">传统解绑</div>
+    <div class="div2">监听解绑</div>
+    <div class="div3">
+        div3
+        <div class="div4">div4</div>
+        <div class="div5">事件对象</div>
+    </div>
+   <ul>
+       <li>事件委托，在父节点上设置监听事件</li>
+       <li>事件委托，在父节点上设置监听事件</li>
+       <li>事件委托，在父节点上设置监听事件</li>
+       <li>事件委托，在父节点上设置监听事件</li>
+       <li>事件委托，在父节点上设置监听事件</li>
+       <li>事件委托，在父节点上设置监听事件</li>
+       <li>事件委托，在父节点上设置监听事件</li>
+       <li>事件委托，在父节点上设置监听事件</li>
+   </ul>
+   <div class="div6">
+       <div class="div7">我是mousemove事件</div>
+   </div>
+    <script>
+        // 1.传统方法 唯一性
+        var btn1 =document.querySelector('#btn1');
+        btn1.onclick=function(){
+            alert('传统方法 唯一性');
+        }
+        btn1.onclick=function(){
+            alert('我覆盖了');
+        }
+
+
+
+
+
+
+
+
+        // 2.监听方法 addEventListener(type,listener,) 可以添加多个监听器 ie9以下
+var btn2=document.querySelector('.btn2');
+btn2.addEventListener('click',function(){
+    alert('监听方法1');
+})
+       
+btn2.addEventListener('click',function(){
+    alert('监听方法2');//可以弹出两次
+})
+
+// 注册事件兼容性函数
+// function addEventListener(element,eventName,fn){
+//     if(element.addEventListener){
+//         element.addEventListener(eventName,fn);
+//     }else if(element.attachEvent){
+//         element.attachEvent('on'+eventName,fn);
+
+//     }else{
+//         element['on'+eventName]=fn;
+//     }
+// }
+
+
+
+
+
+
+// 3.解绑事件
+// (1)传统方法
+ var div1=document.querySelector('.div1');
+ div1.onclick=function () {
+     alert('我只响应一次');
+     div1.onclick=null;
+ }
+//  (2)监听解绑
+var div2=document.querySelector('.div2');
+div2.addEventListener('click',fn);
+//这里的fn不需要()调用
+function fn(){
+    alert('我也只响应一次');
+    div2.removeEventListener('click',fn);
+}
+
+
+
+
+
+
+//4.DOM事件流(传播过程)
+// (1)捕获阶段(向下传播)
+// (2)当前目标阶段
+// (3)冒泡阶段(向上传播)onclick只有冒泡阶段
+var div4=document.querySelector('.div4');
+div4.addEventListener('click',function(e){
+    //如果addEventListener第三个参数为true 则处于捕获阶段
+    //document->html->body->div4->div3
+    alert('div4');
+e.stopPropagation();//阻止冒泡
+e.cancelBubble=true;//阻止冒泡低版本
+},true);
+var div3=document.querySelector('.div3');
+div4.addEventListener('click',function(){
+    e.stopPropagation();//阻止冒泡
+e.cancelBubble=true;//阻止冒泡低版本
+    //如果addEventListener第三个参数为true 则处于捕获阶段
+    alert('div3');
+},true);
+
+
+var div4=document.querySelector('.div4');
+div4.addEventListener('click',function(){
+    //如果addEventListener第三个参数为false或者没有 则处于冒泡阶段
+    //document->html->body->div4->div3
+    alert('div4');
+},false);
+var div3=document.querySelector('.div3');
+div4.addEventListener('click',function(){
+  
+    alert('div3');
+},false);
+
+
+
+
+
+// 5.事件对象
+var div5=document.querySelector('.div5');
+div5.onclick=function(event){
+// event是一个事件对象，必须有事件才会存在
+// 事件对象是系统自动创建的，不用传递参数
+// 事件对象是一系列相关事件的集合
+//事件对象可以自己命名
+//事件对象有兼容性问题
+
+// event=event||window.event;//兼容性写法
+console.log(event);
+// (1)event.target返回触发事件的对象，this是返回绑定事件对象
+console.log(event.target);
+//(2)event.currentTarget返回绑定事件对象
+console.log(event.currentTarget);
+// (3)event.type返回触发事件对象的动作
+console.log(event.type);
+// (4)event.preventDefault()阻止默认事件
+// return false;阻止默认事件(后面代码不执行)
+event.preventDefault()
+// (5)event.stopPropagation()阻止冒泡
+}
+
+
+
+
+// 6.事件委托 ul li中不要给子节点单独设置事件监听器 给父节点设置
+var ul=document.querySelector('ul');
+ul.addEventListener('click',function(e){
+    alert('我通过了冒泡触发了父节点');
+    // e.target得到我们点击的对象
+    e.target.style.backgroundColor='pink';
+})
+
+
+
+//7.常用的鼠标事件
+// (1)阻止鼠标右键菜单
+document.addEventListener('contextmenu',function(e){
+    e.preventDefault();
+})
+// (2)禁止选中文字
+document.addEventListener('selectstart',function(e){
+    e.preventDefault();
+})
+// (3)鼠标事件对象MouseEvent
+document.addEventListener('click',function(e){
+    // e.clientX x y相对于可视区的坐标
+    console.log(e.clientX); 
+   console.log( e.clientY );
+//    e.pageX x y相对于文本内容的坐标
+console.log(e.pageX); 
+   console.log( e.pageY);
+   //    e.screenX x y相对于电脑屏幕的坐标
+   console.log( e.screenX); 
+   console.log( e.screenY  );
+});
+// (4)mouseenter和mouseover的区别
+// a.
+var div6=document.querySelector('.div6');
+var div7=document.querySelector('.div7');
+div6.addEventListener('mouseover',function(){
+    // mouseover会冒泡
+    console.log(11 );//经子盒子会触发，mouseenter不会，经过自身盒子才会触发
+    // mouseenter 和mouseleave鼠标离开
+})
+
+
+// 8.常用键盘事件
+// (1)keyup弹起触发
+document.addEventListener('keyup',function(){
+    console.log('我弹起了 ');
+})
+// (2)keydown按下触发(先执行)
+document.addEventListener('keydown',function(){
+    console.log('我按下了down ');
+})
+// (3)keypress按下触发(不能识别功能键 ctrl shift...)
+document.addEventListener('keypress',function(){
+    console.log('我按下了press ');
+})
+// (4)键盘事件对象
+document.addEventListener('keyup',function(e){
+    // keyup keydown不区分大小写
+    // keypress区分大小写
+    console.log(e.keyCode);//返回按键的ac码值1
+});
+document.addEventListener('keypress',function(e){
+    // keyup keydown不区分大小写
+    // keypress区分大小写
+    console.log(e.keyCode);//返回按键的ac码值1
+})
+    </script>
+</body>
+</html>

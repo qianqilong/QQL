@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+    </style>
+   <script src="js/echarts.js"></script>
+</head>
+<body>
+   <div class="box"></div> 
+    <script>
+        //实例化echarts
+        var myChart=echarts.init(document.querySelector('.box'));
+//配置饼图对象
+        option = {
+        color:['yellow','blue','green','red','skyblue'],
+  title: {//标题
+    text: 'Referer of a Website',
+    subtext: 'Fake Data',
+    left: 'center'
+  },
+  tooltip: {//提示框组件
+    trigger: 'item'
+  },
+  legend: {//图例组件
+    orient: 'vertical',
+    left: 'left'
+  },
+  toolbox:{//工具箱
+    feature: {
+        saveAsImage:{}//下载图片
+
+    }
+  },
+  grid:{//边框
+    containLabel:true//显示刻度
+  },
+  xAxis:{//直角坐标系 grid 中的 x 轴，
+    type:'category',
+    boundaryGap:false,
+    //坐标对应刻度上，true在两个线中间
+data:['1','2','3','4']
+  },
+  yAxis:{//直角坐标系 grid 中的 y 轴，
+type:'value'//获取 series值
+  },
+  series: [
+    {
+      name: '饼图', //系列名称，用于tooltip,legend
+      type: 'pie',//声明图表类型
+      radius: '50%',
+      stack:'',//设置相同的值会堆叠
+      data: [//数据相关说明
+        { value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' }
+      ],
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+myChart.setOption(option);
+    </script>
+</body>
+</html>

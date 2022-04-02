@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+        
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+        
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+        
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+        
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+        
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+
+function animate(obj, target, callback) {
+            clearInterval(obj.timer);//第二次点击鬼畜是没有清除定时器
+            obj.timer = setInterval(function () {
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer);
+                    if (callback) {
+                        callback();//callback&&callback();
+                    }
+                }
+
+                var step = Math.ceil(target - window.pageYOffset) / 10;//向上取整缓步移动
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                var move = window.pageYOffset + step;
+                // obj.style.left = move + 'px';
+                window.scroll(0,window.pageYOffset+step);
+            }, 15)
+        }
+        // 页面被卷去的头部window.pageYoffset
+        var sliderbar=document.querySelector('.slider-bar');
+        var banner=document.querySelector('.banner');
+        var main=document.querySelector('.main');
+        var goback=document.querySelector('.goBack');
+        var maintop=main.offsetTop;
+        var bannerTop=banner.offsetTop;
+      var  sliderbarTop=sliderbar.offsetTop-bannerTop;
+        document.addEventListener('scroll',function(){
+            console.log(window.pageYOffset);
+            // 1.当我们的头部被卷去了172时，侧边栏改成固定定位
+            if(window.pageYOffset>=banner.offsetTop){
+                sliderbar.style.position='fixed';
+                sliderbar.style.top=sliderbarTop+'px';
+            }else{
+                sliderbar.style.position='absolute';
+                sliderbar.style.top='300px';
+            }
+            if(window.pageYOffset>=main.offsetTop){
+                goback.style.display='block';
+            }else{
+                goback.style.display='none';
+            }
+        });
+    // 点击返回顶部，返回顶部
+   goback.addEventListener('click',function(){
+       animate(window,0);
+   })
+    </script>
+</body>
+</html>

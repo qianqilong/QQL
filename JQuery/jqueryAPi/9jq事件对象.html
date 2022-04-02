@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="../jquery-3.6.0.js"></script>
+    <script>
+        // 1.事件冒泡
+        $(function () {
+            $(document).on({
+                click: function () {
+                    console.log("点击了document");
+                }
+            });
+            $(".box1").on({
+                click: function (ele) {
+                    console.log("点击了div");
+                    ele.stopPropagation();//阻止默认行为或冒泡
+                }
+
+            });
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <div class="box1"></div>
+</body>
+
+</html>

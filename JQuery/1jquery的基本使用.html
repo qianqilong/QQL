@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <div class="box1"></div>
+    <span></span>
+    <script>
+        // 1.jQuery的入口函数
+        //(1)
+        $(document).ready(function () {
+            // $('.box1').hide();
+        });
+        //(2)
+        //   $(function(){
+        //     $('.box1').hide();
+        //   });
+
+
+
+
+
+        // 2.$是jQuery的别称,$是jq的顶级对象
+        jQuery(function () {
+            $('.box1').hide();
+        });
+
+
+
+        // 3.jQuery对象和dom对象
+        // (1)dom对象
+        var mydiv = document.querySelector('.box1');
+        console.log(mydiv);
+        // (2)jq对象 利用$对dom进行封装后产生的对象(伪数组形式存储)
+       
+        $('span');//jq对象只可以用jq方法，dom对象只可以用jq对象
+        console.log( $('div'));
+        // (3)jQuery对象与dom对象的装换
+        var span=document.querySelector('span');
+        $(span);//dom对象转换成了jq对象
+        $('.box1')[0];//jq对象转换成dom对象
+        $('.box1').get(0);//jq对象转换成dom对象
+    </script>
+</body>
+
+</html>

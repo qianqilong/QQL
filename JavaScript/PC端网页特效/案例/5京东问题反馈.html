@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            margin: 100px auto;
+            background-color: red;
+
+        }
+
+        .box2 {
+
+
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 50px;
+            background-color: pink;
+        }
+
+        .box3 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="box3"></div>
+        <div class="box2"></div>
+    </div>
+    <script>
+        var box3 = document.querySelector('.box3');
+        var box2 = document.querySelector('.box2');
+        var box1 = document.querySelector('.box1');
+        function animate(obj, target, clllback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {//给不同元素指定不同定时器
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    // 回调函数写到定时器里面
+                    if (clllback) {
+                        clllback();
+                    }
+                }
+                var stop = Math.ceil(target - obj.offsetLeft) / 10;
+                stop = stop > 0 ? Math.ceil(stop) : Math.floor(stop);
+                // (1)获得元素位置
+                x = obj.offsetLeft + stop;//这里改成缓数
+                // (2)让孩子在当前位置上加一个移动距离
+                obj.style.left = x + 'px';
+            }, 15);
+        }
+        box1.addEventListener('mouseenter', function () {
+            animate(box2, -box2.offsetWidth);
+        })
+        box1.addEventListener('mouseleave', function () {
+            animate(box2, 0);
+        })
+
+    </script>
+</body>
+
+</html>

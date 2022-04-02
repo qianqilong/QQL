@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- 导入页面的基本样式 -->
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .logo {
+            width: 225px;
+            height: 65px;
+            margin: 50px 0;
+        }
+
+        .tabs {
+            display: flex;
+        }
+
+        .tabs>div {
+            width: 55px;
+            height: 23px;
+            line-height: 23px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tabs>div:hover {
+            text-decoration: underline;
+            color: #ff5700;
+        }
+
+        .tab-active {
+            background-color: #ff5700;
+            font-weight: bold;
+            color: white;
+        }
+
+        .tabs>.tab-active:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box .ipt {
+            box-sizing: border-box;
+            width: 500px;
+            height: 34px;
+            line-height: 30px;
+            margin: 0;
+            padding: 0;
+            padding-left: 5px;
+            outline: none;
+            border: 2px solid #ff5700;
+        }
+
+        .btnSearch {
+            margin: 0;
+            height: 34px;
+            border: none;
+            background-color: #ff5700;
+            color: white;
+            letter-spacing: 1em;
+            text-align: center;
+            width: 90px;
+            padding-bottom: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .btnSearch:hover {
+            opacity: 0.9;
+        }
+
+        #suggest-list {
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        .suggest-item {
+            line-height: 30px;
+            padding-left: 5px;
+        }
+
+        .suggest-item:hover {
+            cursor: pointer;
+            /* 鼠放上变成小手 */
+            background-color: #eee;
+        }
+    </style>
+    <!-- 导入 jQuery -->
+    <script src="../jquery-3.6.0.js"></script>
+    <!-- 导入模板引擎 -->
+    <script src="template-web.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img src="./images/taobao_logo.png" alt="" class="logo" />
+
+        <div class="box">
+            <!-- tab 栏 -->
+            <div class="tabs">
+                <div class="tab-active">宝贝</div>
+                <div>店铺</div>
+            </div>
+            <!-- 搜索区域（搜索框和搜索按钮） -->
+            <div class="search-box">
+                <input id="ipt" type="text" class="ipt" placeholder="请输入要搜索的内容" /><button class="btnSearch">
+                    搜索
+                </button>
+            </div>
+
+
+            <!-- 搜索建议列表 -->
+            <div id="suggest-list">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 模板结构 -->
+    <script type="text/html" id="tpl">
+    {{each result}}
+    <!-- 搜索建议项 -->
+<div class="suggest-item">{{$value[0]}}</div>
+<!-- 选择小数组索引为0的那一项 -->
+    {{/each}}
+  </script>
+
+    <script>
+        $(function () {
+            //防抖 事件被触发后延迟n秒执行回调，如果n秒事件有被触发，则重新计算
+            // 频繁触发事件时，防止多次回调，输入框连续输入内容，输入完成才会触发
+            // 1.定义防抖timer
+            var timer = null;
+            // 2.定义防抖函数
+            function debounceSearch(kw) {
+                timer = setTimeout(function () {
+                    gettaobao(kw);
+                }, 500);//定义一个500毫秒的延时器
+            }
+
+
+
+
+
+
+
+            //搜索对象的缓存
+            var cacheobj = {};
+
+
+
+
+
+          
+
+
+
+
+
+
+            //   为输出框绑定keyup事件
+            $('#ipt').on('keyup', function () {
+                clearTimeout(timer);
+                var keywords = $(this).val().trim();
+                if (keywords.length <= 0) {
+                    return $('#suggest-list').empty().hide();
+                    //如果输入框为空，就清空数组，并隐藏搜索建议列表
+                }
+
+
+                // 如果缓存中有之前输入的数据，直接拿来用
+                if (cacheobj[keywords]) {
+                    return render(cacheobj[keywords]);
+                }
+                //获取搜索建议列表
+                debounceSearch(keywords);
+
+            });
+
+
+
+
+            // 封装一个jsonp函数
+            function gettaobao(w) {
+                $.ajax({
+                    url: 'https://suggest.taobao.com/sug?q=' + w,
+                    dataType: 'jsonp',
+                    success: function (res) {
+                        //  console.log(res);
+                        render(res);
+                    }
+                })
+            }
+
+
+
+
+            //  封装一个渲染函数
+            function render(res) {
+                if (res.result.length <= 0) {
+                    return $('#suggest-list').empty().hide();
+                }
+                var htmlstr = template('tpl', res);
+                $('#suggest-list').html(htmlstr).show();
+
+                //获取用户输入内容
+                var k = $('#ipt').val().trim();
+                //缓存到数组中
+                cacheobj[k] = res;
+
+            }
+
+
+
+
+         
+
+
+
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

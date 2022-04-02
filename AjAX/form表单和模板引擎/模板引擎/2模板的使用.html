@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/template-web.js"></script>
+    <script src="../js/jquery-3.6.0.js"></script>
+    <!-- template('模板的id,需要渲染的数据') -->
+</head>
+<body>
+    <div id="contents">
+
+    </div>
+    
+
+    <script type="text/html" id="tpl-user">
+   <!-- 定义模板到script标签中 type必须是type="text/html" -->
+    
+   <div> {{name}}   <span> {{age}} </span> </div>
+   <!-- {{}}中可以进行变量的输出，对象属性的输出，三元表达式，逻辑输出，加减乘除 -->
+   {{@test}} 
+   <!-- 原文输出，保证test中的标签符号可以被正常渲染 -->
+   {{if flag===0}}flag的值是0  {{else if flag===1}}flag的值是1   {{/if}}
+   <!-- 标准语法的条件输出 -->
+   {{each hobby}}<li>索引是：{{$index}} 循环项是：{{$value}} </li>{{/each}}
+   <!-- 标准语法的循环 -->
+ 
+{{ regTime | dateFormat }}
+   <!-- 定义过滤器函数template.defaults.imports.filterName=function(value) -->
+ 
+    </script>
+    <script>
+        
+        // 定义需要渲染的数据
+          var data={
+            name:'刘小龙:',
+            age:20,
+            test:'<h3>用户信息</h3>',
+            flag:1,
+            hobby:['吃饭','睡觉','打豆豆'],
+            regTime:new Date(),
+        }
+     
+
+          //  定义过滤器,要定义在输出函数的前面
+          template.defaults.imports.dateFormat=function(date){
+            console.log(date);
+            var y=date.getFullYear();
+            var m=date.getMonth()+1;
+            var d=date.getDate();
+            return y+'-'+m+'-'+d;
+          }
+          var htmlstr=template('tpl-user',data);
+           $('#contents').html(htmlstr);
+    </script>
+</body>
+</html>

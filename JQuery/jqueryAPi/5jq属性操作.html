@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+    <script src="../jquery-3.6.0.js"></script>
+    <script>
+        // 1.获取元素的固有属性prop("属性名",["修改值"])；
+        $(function () {
+            console.log($(".box1").prop("class"));
+            $(".box1").prop("name", "222");
+            $("input").change(function () {
+                console.log($(this).prop("checked"));
+                $("input:checked");//被选中的
+            })
+
+
+
+
+
+
+
+
+            // 2.获取自定义属性attr()
+            // (1)
+            console.log($(".box1").attr("index"));
+            $(".box1").attr("index", "3");
+            
+
+
+
+
+
+
+
+
+
+            // 3.data()数据缓存数据存在内存中
+      $("span").data("uname","andy");
+console.log($("span").data("uname"));//data-index data("index")获取中不需要data
+
+// input:checked找出被选择的属性
+
+
+
+
+
+
+
+ //4.(1)普通元素内容html()
+// (1)获取内容
+console.log($("span").html());
+// (2)设置内容
+$(".box2").html("121331");
+
+
+
+// 普通元素内容text()
+// (1)获取内容
+console.log($(".box2").text());
+// (2)设置内容
+$(".box2").text("121344");
+
+// (3)获取表单内容val
+// (1)获取内容
+console.log($(".text").val());
+// (2)设置内容
+$(".text").val("121344");
+        })
+
+parents()//祖先选择器
+
+
+    </script>
+</head>
+
+<body>
+    <div class="box1" name="1" index="2"></div>
+    <input type="checkbox" name="" id="" checked   data-index="">
+    <span>123</span>
+    <div class="box2">1111</div>
+    <input type="text" value="1212" class="text">
+</body>
+
+</html>

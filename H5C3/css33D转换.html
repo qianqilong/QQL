@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+      body{
+          perspective: 500px;
+          /* 透视要写到观察盒子的父盒子上 */
+      }
+      div{
+        
+          float: left;
+          width: 200px;
+          height: 200px;
+          margin-left: 20px;
+      }
+      .box1{
+          background-color: aqua;
+    transition: all 3s;
+    /* z轴移动必须要透视prespective  透视要写到观察盒子的父盒子上 */
+      }
+      .box1:hover{
+        transform: translate3d(0,0,100px); 
+      }
+/* 3D旋转 */
+      .box2{
+          background-color: aquamarine;
+          transition: all 3s;
+      }
+      .box2:hover{
+          transform: rotateX(180deg);
+      }
+      .box4{
+          background-color:gold ;
+          transition: all 3s;
+      }
+      .box4:hover{
+          transform: rotateY(180deg);
+      }
+      .box5{
+          background-color: blue;
+          transition: all 3s;
+      }
+      .box5:hover{
+          transform:rotateZ(180deg)
+      }
+      .box3{
+          background-color: black;
+          transition: all 3s;
+      }
+      .box3:hover{
+          transform: rotate3d(1,1,0,180deg);
+
+      }
+      /* 3D旋转 */
+
+
+      /* 3D呈现 */
+      .box8{
+          position: relative;
+          transition: all 3s;
+          /* 让子盒子保持3D效果 */
+          transform-style: preserve-3d;
+
+      }
+.box6{
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: blueviolet;
+    
+    
+}
+.box7{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+   
+ transform: rotateX(60deg);
+}
+.box8:hover{
+    transform: rotatey(180deg);
+}
+
+      /* 3D呈现 */
+  </style>
+</head>
+<body>
+    <!-- 3D位移 -->
+    <div class="box1"></div>
+    <!-- 3D位移 -->
+    <!-- 3D旋转 -->
+    <div class="box2"></div>
+    <div class="box4"></div>
+    <div class="box5"> </div>
+    <div class="box3"></div>
+    <div class="box8">
+        <div class="box6"></div>
+        <div class="box7"></div>
+    </div>
+       <!-- 3D旋转 -->
+</body>
+</html>

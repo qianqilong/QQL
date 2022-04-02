@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+        }
+
+        .box{
+            position: relative;
+            width: 1200px;
+            height: 500px;
+            
+            border: 1px solid;
+            margin: 100px auto;
+        }
+        
+        .box textarea{
+            position: absolute;
+            top: 100px;
+            left: 200px;
+         width: 800px;
+         height: 300px;
+         resize: none;
+        outline:none;
+        font-size: 40px;
+        }
+       
+
+        .box button{
+            position: absolute;
+            bottom:80px;
+            right:140px;
+        }
+        .box ul{
+            position: absolute;
+           top: 400px;
+            left: 50%;
+            transform: translateX(-50%); 
+            
+        }
+        .box ul li{
+        display: none;
+            width: 500px;
+            height: 20px;
+            background-color: aqua;
+        padding-top: 3px;
+        }
+          .box ul li a{
+              float: right;
+          }
+    </style>
+    <script src="../../jquery-3.6.0.js"></script>
+    <script>
+      $(function(){
+        //   1.点击时获取文本框的值给li添加到ul中
+          $("button").on("click",function(){
+            // (1)获取文本框的值
+        var text=  $("textarea").val();
+        // 创建一个li
+        var li=$("<li></li>");
+        // li中添加文本框的内容
+        li.html(text+"<a href='javascript:;'>删除</a>");
+        //li加到ul中
+        $("ul").prepend(li);
+     li.slideDown();
+          });
+        //   2.点击删除按钮删除留言
+     $("ul").on("click","a",function(){
+         $(this).parents("li").slideUp(function(){
+             $(this).remove();
+         });
+     });
+      })
+    </script>
+</head>
+<body>
+    <div class="box" >
+        <textarea style="clear:both;"></textarea>
+            <button>发布</button>
+            <ul>
+            
+            </ul>
+    </div>
+</body>
+</html>

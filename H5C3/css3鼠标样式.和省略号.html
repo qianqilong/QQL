@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 鼠标样式cursor */
+        div{
+            width: 150px;
+            height: 80px;
+            background-color: pink;
+            margin: 100px auto;
+            white-space: nowrap;
+            /* 不让换行 */
+            overflow:hidden;
+    /* 溢出隐藏 */
+    text-overflow: ellipsis;
+        }
+        .div1{
+            white-space: normal;
+            /* 继承了父元素的不让换行,取消 */
+ overflow: hidden;
+ /* 弹性伸缩盒子模型 */
+ display: -webkit-box;
+ /* 限制在一个块元素显示的文本行数 */
+ -webkit-line-clamp: 3;
+/* 设置检索伸缩盒子对象子元素的排列方式 */
+-webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li style="cursor:default">默认鼠标</li>
+        <li style="cursor:pointer">小手鼠标</li>
+        <li style="cursor:move">移动鼠标</li>
+        <li style="cursor:text">文本鼠标</li>
+        <li style="cursor:not-allowed">禁止鼠标</li>
+    </ul>
+    <div>
+啥也不说，我要省略一万字
+    </div>
+<div class="div1">
+    啥也不说，我要省略一万字
+    啥也不说，我要省略一万字
+    啥也不说，我要省略一万字
+</div>
+</body>
+</html>

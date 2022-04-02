@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+img{
+    width: 300px;
+    height: 200px;
+}
+    </style>
+</head>
+<body>
+    <img src="../../img/s.gif" alt="">
+    <div>上午好</div>
+    <script>
+        // 获取元素
+        var img=document.querySelector('img');
+        var div=document.querySelector('div');
+        //得到小时数
+        var date=new Date();
+        var h=date.getHours();
+        if(h<12){
+            img.src='../../img/s.gif';
+            div.innerHTML='好好写代码';
+
+        }else if(h<18){
+            img.src='../../img/x.gif';
+            div.innerHTML='好好写代码';
+        }else{
+            img.src='../../img/w.gif';
+            div.innerHTML='好好写代码';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: relative;
+            height: 400px;
+            width: 400px;
+            border: 1px solid black;
+        }
+        .mask{
+            display: none;
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            opacity: .5;
+        }
+        .big{
+            display: none;
+            position: absolute;
+            left:410px;
+            top: 0;
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            border: 1px solid black;
+           overflow: hidden;
+        }
+        .bigmg{
+            position: absolute;
+            
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../../img/s3.png" alt="" >
+    <div class="mask"></div>
+    <div class="big">  <img src="../../img/big.jpg" alt=""class='bigmg'></div>
+    </div>
+    <script>
+
+// 获取元素
+var img=document.querySelector('.box');
+var mask=document.querySelector('.mask');
+var big=document.querySelector('.big');
+// 1.鼠标放上后显示mask big
+img.addEventListener('mouseover',function(){
+    mask.style.display='block';
+    big.style.display='block';
+})
+//2.鼠标离开隐藏
+img.addEventListener('mouseout',function(){
+    mask.style.display='none';
+    big.style.display='none';
+})
+//3.(1)鼠标按下获得鼠标在盒子内的坐标
+img.addEventListener('mousemove',function(e){
+    var x=e.pageX-this.offsetLeft;
+    var y=e.pageY-this.offsetTop;
+    console.log(x);
+    console.log(y);
+// (2)把把鼠标的x y坐标赋值给盒子
+var x1=x-mask.offsetWidth/2;
+var y1=y-mask.offsetHeight/2;
+var maxmaskw=img.offsetWidth-mask.offsetWidth;
+var maxmaskh=img.offsetHeight-mask.offsetHeight;
+// (3)防止盒子出去
+if(x1<=0){
+    x1=0;
+}else if(x1>=maxmaskw){
+    x1=maxmaskw;
+}
+if(y1<=0){
+    y1=0;
+}else if(y1>=maxmaskh){
+    y1=maxmaskh;
+}
+mask.style.left=x1+'px';//让鼠标居中
+mask.style.top=y1+'px';
+// (3)黄色盒子移动，大盒子也移动
+// 大图片移动距离=mask移动距离*大图移动最大距离/mask移动最大距离
+var bigmg=document.querySelector('.bigmg');
+var bigmax=bigmg.offsetWidth-big.offsetWidth;//大图片最大的移动距离
+var bigx=x1*bigmax/maxmaskw;
+var bigy=y1*bigmax/maxmaskh;
+bigmg.style.left=-bigx+'px';
+bigmg.style.left=-bigy+'px';
+
+})
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .mynumber {
+            float: left;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: cornflowerblue;
+            border-radius: 10px;
+            text-align: center;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var a = 0;
+        var b = 0;
+        var a = Math.random() * 10;
+        var b = Math.random() * 10;
+        a = a.toFixed(0);
+        b = b.toFixed(0)
+        document.write()
+        var i = 0;
+        document.write("<div>" + a + "+" + b + "=" + "</div>");
+        for (i = 0; i < 20; i++) {
+            document.write("<div class=mynumber onclick = 'result_show(this)' > "+i+"</div > ")
+}
+        function result_show(obj) {
+            var result = Number(a) + Number(b);
+            var num = obj.innerHTML;
+            alert(Number(num) == result)
+        }
+    </script>
+</body>
+
+</html>

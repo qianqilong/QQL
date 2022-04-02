@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        function success(data){
+            console.log('拿到的data');
+            console.log(data);
+        }
+    </script>
+    <!-- 调用和定义分开 -->
+    <!-- // 网页中无法通过AJAX获取非同源接口，但是script不受影响，可以通过其src属性请求非同源的js脚本 -->
+    <script src="3.js?callback=success"></script>
+    <!-- 用查询字符串 -->
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .th-promo {
+            position: relative;
+            overflow: hidden;
+            width: 721px;
+            height: 455px;
+            background-color: aqua;
+            margin: 100px auto;
+        }
+
+        .th-promo img {
+            width: 100%;
+        }
+
+        .th-promo ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600%;
+        }
+
+        .th-promo ul li {
+            float: left;
+        }
+
+        .next,
+        .prev {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            margin-top: -15px;
+            width: 20px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .prev {
+            left: 0;
+            top: 50%;
+
+        }
+
+        .next {
+            right: 0;
+            top: 50%;
+
+        }
+
+        .th-promo ol {
+            position: absolute;
+            bottom: 10px;
+            left: 10%;
+            margin-left: -35px;
+
+            height: 13px;
+
+            border-radius: 20px;
+
+        }
+
+        .th-promo ol li {
+            float: left;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 3px;
+        }
+        .th-promo ol li:last-child{
+            background-color:transparent;
+            border: transparent;
+        }
+        .current {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="th-promo">
+        <!-- 左右按钮 -->
+        <a href="javascript:;" class="prev"> &lt</a>
+        <a href="javascript:;" class="next"> &gt</a>
+        <!-- 核心滚动区域 -->
+        <ul>
+            <li><a href=""><img src="../../img/focus.jpg" alt=""></a></li>
+            <li><a href=""><img src="../../img/focus1.jpg" alt=""></a></li>
+            <li><a href=""><img src="../../img/focus2.jpg" alt=""></a></li>
+            <li><a href=""><img src="../../img/focus3.jpg" alt=""></a></li> 
+            <li><a href=""><img src="../../img/focus.jpg" alt=""></a></li>  
+        </ul>
+        <!-- 小圆点 -->
+        <ol>
+
+        </ol>
+    </div>
+    <script>
+
+        // 1.鼠标经过轮播图左右按钮显示
+        var prev = document.querySelector('.prev');
+        var next = document.querySelector('.next');
+        var thpromo = document.querySelector('.th-promo');
+        var imgW = thpromo.offsetWidth;
+     
+        // 先封装一个动画函数
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);//第二次点击鬼畜是没有清除定时器
+            obj.timer = setInterval(function () {
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    if (callback) {
+                        callback();//callback&&callback();
+                    }
+                }
+
+                var step = Math.ceil(target - obj.offsetLeft) / 10;//向上取整缓步移动
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                var move = obj.offsetLeft + step;
+                obj.style.left = move + 'px';
+            }, 15)
+        }
+
+
+        thpromo.addEventListener('mouseenter', function () {
+            prev.style.display = 'block';
+            next.style.display = 'block';
+            clearInterval(timer);
+        })
+        thpromo.addEventListener('mouseleave', function () {
+            prev.style.display = 'none';
+            next.style.display = 'none';
+            timer=setInterval(function(){
+    // 相当于点击右侧按钮
+    // 手动调用事件
+    
+    next.click();
+},2000);
+        })
+        // 动态生成小圆点
+        // (1)小圆点与图片张数一样
+        // (2)首先得到ul里面的图片张数(li的个数)
+        // (3)用循环动态生成小圆圈
+        var ul = thpromo.querySelector('ul');
+        var ol = thpromo.querySelector('ol');
+       
+        console.log(ul.children.length);
+      
+        for (var i = 0; i < ul.children.length; i++) {
+            //   创建li
+            var li = document.createElement('li');
+            // 给li添加索引号
+            li.setAttribute('index', i);
+            //   放入ol中
+            ol.appendChild(li);
+            //点击小圆圈变色(排他)
+            li.addEventListener('click', function () {
+                // 干掉所有人
+                for (var i = 0; i < ul.children.length; i++) {
+                   ol.children[i].className='';
+                }
+                this.className = 'current';
+                //我们点击了就用当前索引号
+                var index=this.getAttribute('index');
+                num=index;
+                circle=index;//让两者同步
+                var move=-index*imgW;
+                animate(ul,move)
+            });
+        }
+        ol.children[0].className = 'current';
+      
+     
+// 2.左右按钮可以播放图
+var num=0;
+var circle=0;
+var flag=true
+
+   
+    next.addEventListener('click',function(){
+        if(flag){
+            flag=false;
+    if(num==ul.children.length-1){
+    ul.style.left=0;
+    num=0;
+}
+    num++;
+    animate(ul,-num*imgW,function(){
+        flag=true;
+    });//gun动会到底色
+    //无缝滚动
+    //  (1)把ul的一个li复制一份放到最后面
+    //  (2)滚动到最后一张时ul快速的不做动画跳到最左侧
+    //小圆圈跟随着图片动
+//    (1)先清除其他小圆类名
+
+    circle++;
+    if(circle==ul.children.length-1){
+        circle=0;
+    }
+    change();
+        }
+});
+    
+
+//节流阀回调函数
+prev.addEventListener('click',function(){
+    if(flag){
+        flag=false;
+    if(num==0){
+        num=ul.children.length-1;
+    ul.style.left=-num*imgW+'px';
+   
+}
+    num--;
+    animate(ul,-num*imgW,function(){
+        flag=true;
+    });//gun动会到底色
+    //无缝滚动
+    //  (1)把ul的一个li复制一份放到最后面
+    //  (2)滚动到最后一张时ul快速的不做动画跳到最左侧
+    //小圆圈跟随着图片动
+//    (1)先清除其他小圆类名
+
+    circle--;
+    if(circle<0){
+        circle=ul.children.length-2;
+    }
+  change();
+    }
+})
+// 3.图片播放小圆点跟随图片一起变化
+// (1)ul在移动
+// 4.点击小圆点可以播放响应的图片
+
+function change(){
+    for (var i = 0; i < ul.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                ol.children[circle].className = 'current';
+}
+
+// 5.鼠标不经过轮播图轮播图会自动播放图片
+var timer=setInterval(function(){
+    // 相当于点击右侧按钮
+    // 手动调用事件
+    
+    next.click();
+},2000);
+// 6.鼠标经过轮播图停止播放
+    </script>
+</body>
+
+</html>

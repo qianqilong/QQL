@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <script>
+        // 版本控制软件
+        // 操作方便，易于对比，易于回溯，不易丢失，协助方便
+        // 分布式版本控制系统(Git)
+        // (svn)是基于差异的版本控制
+        // (Git)记录快照，空间换时间，近乎本地操作(同步服务器中)
+        // git的三个区域分别是工作区，暂存区，仓库
+        //git的三种状态modified已修改，staged已暂存，committed已提交
+        // 1.配用户名和邮箱
+        // (1)git config --global user.name "qqL"
+        // (2)git config --global user.email "1959377950@qq.com" 
+
+        // 2.查看所有的全局配置项
+        // git config --list --global
+        //3.查看指定的全局配置项
+        // (1)git config user.name
+        // (2)git config user.email
+
+        // 4.查看命令帮助手册
+        // (1)git help config 
+        // (2)git config -h(简明)
+
+        // 5.本地目录转换成仓库
+        //(1)git init (初始化git仓库)
+
+        // 6.工作区的4种状态
+        // (1)未修改 (2)已修改 (3)已暂存 (4)git工作区每个文件都是未修改
+        // (5)查看文件状态 git status (6)简洁显示状态 git status  -s 或 git status --short
+
+        // 7.跟踪新文件
+        // (1)git add (文件名) 被跟踪处于暂存状态
+
+        //8.提交更新
+        // (1)git commit -m "对文件的描述" 提交了跟踪的文件
+        //    如果文件修改了，要加跟踪
+
+        // 9.撤销对文件的修改
+        // (1)git checkout --文件名
+
+        // 10.git add. 把新增和修改后的文件加入暂存区中
+      
+
+        // 11.git reset HEAD (移除文件名) 加。是全部移除
+
+     // 12.跳过使用暂存区
+    //  git commit -a -m "文件描述   "
+     
+    //13.移除文件
+    // (1)都移除 git rm -f 文件名
+    // (2)git rm --cached 文件名 移除仓库中
+
+    // 14.忽略文件
+    // 在目录创建一个.gitignore
+    // (1)#开头的是注释
+    // (2)/结尾是目录
+    // (3)/开头防止递归
+    // (4)glod模式进行文件和文件夹的配置
+
+    // 15.glod 简化的正则表达式
+    // (1)*匹配0个或多个字符任意字符
+    // (2)[abc]匹配任何一个在括号里的字符
+    // (3)?匹配任意一个字符
+    // (4)[0-9]匹配0-9字符
+    // (5)**匹配任意中间目录a/**/b中间可以任意
+    
+    //16. git log 查看提交历史 后面加-2最近两次提交历史
+
+    //17.回退历史版本
+    //(1) git log --pretty=oneline所有提交历史
+    //(2) git reset --hard<CommitID>
+        //旧版本改为新版本
+    //(3)旧版本要用 git reflog --pretty=oneline所有提交历史
+    //(4)git reset --hard<CommitID>
+
+
+    //18.githup
+    // 开源协议GPL,不让修改和衍生作为商业软件开发
+    // 开源协议MIT,包含原作者的信息
+
+    // 我的仓库 https://github.com/qianqilong/QQL     git@github.com:qianqilong/QQL.git
+    </script>
+</body>
+</html>

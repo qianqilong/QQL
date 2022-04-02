@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+           width: 200px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+<script>
+    var div=document.querySelector('div');
+   var p= location.search.substr(1);
+var s=p.split('=');
+div.innerHTML='欢迎'+s[s.length-1]+'登陆';
+</script>
+</body>
+</html>

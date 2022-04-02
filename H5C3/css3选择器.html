@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav ul li a {
+color: red;
+        }
+        /* 后代选择器 */
+.nav>p {
+    color: rgb(184, 28, 28);
+}
+/* 子元素选择器> */
+nav,
+span {
+    color: red;
+}
+/* 并集选择器 竖着写*/
+.lianjie{
+    text-decoration: none;
+    color: rgb(34, 201, 109);
+}
+.lianjie:hover{
+    color: aqua;
+   
+}
+/* 伪类选择器 
+a:link未被访问链接
+a:visited访问过的链接
+a:hover鼠标悬停链接
+a:active鼠标按下链接
+lvha迅速
+*/
+
+.biaodang:focus{
+    background-color: pink;
+}
+/* 获得焦点选择器 */
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <p>1</p>
+    <ul>
+        <li> <a href="#">1</a></li>
+        <p>1</p>
+    </ul>
+</div>
+<nav>1 </nav>
+<span>1</span><br>
+
+<a href="#" class="lianjie">1</a><br>
+
+<input type="text"class="biaodang">
+</body>
+</html>

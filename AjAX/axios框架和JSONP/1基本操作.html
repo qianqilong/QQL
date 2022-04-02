@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="axios.min.js"> </script>
+</head>
+<body>
+    <button> 发起get请求</button>
+    <button id="post">发起post请求</button>
+    <button id="axiosG">发起axios请求GET请求</button>
+    <button id="axiosP">发起axios请求POST请求</button>
+    <script>
+
+        //发起get请求
+        var but=document.querySelector('button');
+        but.addEventListener('click',function(){
+            var url='http://www.liulongbin.top:3006/api/getbooks';
+            var paramsObj={name:'zs',age:20};
+            axios.get(url,{params:paramsObj}).then(function(res){
+ console.log(res);
+            })
+        })
+     
+
+
+        //发起post请求
+        var but1=document.querySelector('#post');
+        but1.addEventListener('click',function(){
+            var url='http://www.liulongbin.top:3006/api/addbook';
+            var datas={name:'zs',age:20};
+            axios.post(url,datas).then(function(res){
+ console.log(res);
+            })
+        })
+
+
+        //发起综合方法
+        var btn2=document.querySelector('#axiosG');
+        btn2.addEventListener('click',function(){
+            var url='http://www.liulongbin.top:3006/api/getbooks';
+            var paramsObj={name:'zs',age:20};
+            axios({
+                method:'GET',
+                url:url,
+                params:paramsObj,//get属性要用params
+        
+            }).then(function(res){
+                console.log(res);
+            })
+        })
+
+        var btn3=document.querySelector('#axiosP');
+        btn3.addEventListener('click',function(){
+            var url='http://www.liulongbin.top:3006/api/addbook';
+            var datas={name:'zs',age:20};
+            axios({
+                method:'POST',
+                url:url,
+                data:datas,//post属性要用data
+
+            }).then(function(res){
+                console.log(res);
+            })
+        })
+    </script>
+</body>
+</html>

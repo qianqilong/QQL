@@ -1,0 +1,46 @@
+.sk{
+    position: absolute;
+    left: 190px;
+    top: 40px;
+    padding:3px 0 0 14px;
+    border-left:2px solid #c81523;
+}
+ 
+.nav{
+    overflow: hidden;
+}
+.sk_list ul li {
+  
+    float: left;
+    font-weight: 700;
+    margin:0 25px;
+    line-height: 54px;
+    font-size: 16px;
+}
+
+.sk_con ul li{
+    
+float: left;
+margin: 0 25px;
+line-height: 57px;
+}
+.sk_con ul li:last-child::after{
+    font-family: 'icomoon';
+    content: '\e902';
+
+}
+.sk_bd ul li{
+float: left;
+margin-right: 13px; 
+overflow: hidden;
+ width: 290px;
+ height: 460px;
+ 
+border: 1px solid transparent;
+}
+.sk_bd ul li:nth-of-type(4n){
+    margin-right: 0;
+}
+.sk_bd ul li:hover{
+    border: 1px solid #c81523
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.js"></script>
+    <style>
+        li{
+            display: none;
+            list-style: none;
+            width: 40px;
+            height: 40px;
+            margin-top:5px ;
+            background-color: black;
+        }
+        div {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .box3 {
+            display: none;
+        }
+
+        .box4 {
+            display: none;
+        }
+        .box8{
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 1.显示和隐藏
+        // show(3个参数); 一般不加参数
+        // (1)speed速度 slow(慢) normal(正常) fast(快)
+        // (2)easing swing(默认) linear(匀速)
+        // (3)回调函数
+        $(function () {
+            // 隐藏
+            $("button").eq(1).click(function () {
+                $(".box1").hide(1000, function () {
+                    alert(1);
+                });
+            })
+            // 显示
+            $("button").eq(0).click(function () {
+                $(".box1").show(1000, function () {
+                    alert(1);
+                });
+            })
+            $("button").eq(2).click(function () {
+                $(".box2").toggle(1000, function () {
+                    alert(1);
+                });
+            })
+
+
+
+
+
+            //  2.滑动(可以放回调函数)
+            // slideDown下拉
+            $("button").eq(3).click(function () {
+                $(".box3").slideDown(1000);
+
+            });
+            // slideUp上拉
+            $("button").eq(4).click(function () {
+                $(".box3").slideUp(1000);
+
+            });
+            // slideToggle切换
+            $("button").eq(5).click(function () {
+                $(".box4").slideToggle(1000);
+
+            });
+
+
+
+
+
+
+            // 3.事件切换hover鼠标经过 离开,只有一个函数时都执行
+        // $(".nav").hover(function(){
+        //     $(".nav li").show();
+        // },function(){
+        //     $(".nav li").hide();
+        // });
+       
+
+        $(".nav").hover(function(){
+            $(".nav li").stop().toggle();//stop方法必须写在动画的前面,结束前一个动画
+        });
+
+        
+
+
+
+
+
+
+
+
+//4.淡入淡出
+// (1)fadeIn淡入
+$("button").eq(6).click(function () {
+                $(".box5").fadeIn(1000);
+            });
+            //(1)fadeOut淡出
+            $("button").eq(7).click(function () {
+                $(".box5").fadeOut(1000);
+            });
+             //(1)fadeToggle淡入淡出切换
+            $("button").eq(8).click(function () {
+                $(".box6").fadeToggle(1000);
+            });
+            $("button").eq(9).click(function () {
+                $(".box7").fadeTo(1000,0.5);
+            });
+
+
+
+
+
+
+            $("button").eq(10).click(function () {
+                $(".box8").animate({
+                    left:800,
+                    top:200,
+                    opacity:.4
+
+                })
+            });
+        })
+
+
+
+
+
+
+
+        //5.自定义动画animate(params,[speed],[easing],[fn]);params想要修改的样式属性，以对象的形式传递，属性名可以不带“，复核属性要驼峰命名
+
+    </script>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <button>下拉滑动</button>
+    <button>上拉滑动</button>
+    <button>切换滑动</button>
+    <button>淡入</button>
+    <button>淡出</button>
+    <button>淡入淡出切换</button>
+    <button>修改透明度</button>
+    <button>自定义动画</button>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="nav">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+    <div class="box8"></div>
+
+
+</body>
+
+</html>

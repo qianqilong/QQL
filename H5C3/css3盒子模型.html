@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    /* 消除网页元素内外边距，行内元素尽量只是设置左右内外边距 */
+}
+    /* border盒子边框，content盒子内容，padding盒子内边距，margin盒子与盒子距离 */
+    /* border-width边框粗细，
+    border-style边框样式：solid实线，dashed虚线，dotted点线 
+    border-color边框颜色
+    border:边框简写 
+    border-top -bottom -left -right 可以单独设置各边框颜色
+    */
+    
+    div{
+        width: 300px;
+        height: 200px;
+        border:5px dotted pink;
+        padding-left: 20px;
+        /* padding-top -bottom -left -right 确定内边距
+        内边距也会撑大盒子
+        width/height要减去内边距
+        padding 
+        1个值是上下左右都是
+        2个值上下，左右相同
+        3个值上，左右，下
+        4个值上，右，下，左顺时针*/
+        /* border-width: 5px;
+        border-style: dotted;
+        border-color: pink; */
+        margin-bottom:20px ;
+         /* margin-top -bottom -left -right 确定外边距
+         盒子与盒子的距离
+          1个值是上下左右都是
+        2个值上下，左右相同
+        3个值上，左右，下
+        4个值上，右，下，左顺时针*/
+         border-radius: 20px;
+         /* 圆角边框圆形50%是和高度一半 */
+         box-shadow: ;
+         /* box-shadow盒子阴影
+         1，h-shadow 水平阴影*
+         2,v-shadow 垂直阴影*
+          3,blur 模糊距离
+          4，spread 阴影尺寸
+         5，color 阴影颜色
+         6，inset 内阴影*/
+    }
+.n{
+    margin: auto;
+    /* 外边距居中对齐，盒子必须有宽度，margin:auto; */
+    text-align: center;
+/* 行内，行内块元素居中对齐只有 text-align: center; */
+}
+/* 设置外边距的有可能会塌陷 
+1.可以给父亲添加上边框
+2.可以给孩子设置内边距
+3.k可以为父元素添加overflow:hidden*/
+.f{
+    width: 400px;
+    height: 400px;
+margin-top: 50px;
+}
+.z{
+    width: 200px;
+    height: 200px;
+margin-top: 100px;
+
+}
+    /* 表格设置边框 */
+    table{
+        width: 500px;
+        height: 249px;
+    }
+    table,
+     td 
+    {
+border: 1px solid pink;
+border-collapse: collapse;
+/* 消除重叠边框粗 */
+    }
+    /* 边框会影响盒子的实际大小 实际操作中应该减去边框大小*/
+
+
+
+</style>
+<body>
+    <div>ss</div>
+   <table cellspacing="0">
+       <tr>
+           <td>1</td>
+           <td>1</td>
+           <td>1</td>
+           <td>1</td>
+       </tr>
+   </table>
+   <div class="n"><span>文字</span></div>
+   <div class="f">
+       <div class="z"></div>
+   </div>
+</body>
+</html>

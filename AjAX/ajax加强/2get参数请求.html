@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在url地址后拼接字符串是查询字符串相当于变量
+        // ?放在url地址末尾,多个参数用&拼接
+        // $.get $.ajax 原生方法实际上都是把data对象的值用?拼接到url地址后
+        var xhr=new XMLHttpRequest();
+        xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks?id=1');
+        xhr.send();
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                console.log(xhr.responseText);
+            }
+        }
+
+
+        // url地址中只能出现英文，标点，用英文地址去表示非英文字符,中文是三组%
+      var lxl=  encodeURI('刘小龙');//对其进行url编码
+      console.log(lxl);
+      var lxl1 = decodeURI(lxl);//对其进行url解码
+      console.log(lxl1);
+
+    </script>
+</body>
+</html>

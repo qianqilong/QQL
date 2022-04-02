@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            transition: all 1s;
+        }
+        .change{
+        
+            background-color: black;
+            color: aliceblue;
+            width: 400px;
+            height: 400px;
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <button id="btn1">显示时间</button>
+    <div></div>
+    <div id="box1"></div>
+    <button id="btn2">刘德华</button>
+ <button id="btn3">张学友</button>
+ <img src="../img/ldh.jpg" alt="" id="img" title="刘德华">
+ <button id="btn4">按钮</button>
+ <input type="text" name="" id="input1" value="输入内容">
+
+ <div class="box2" id="box2"></div>
+    <script>
+    // 1.事件源，事件类型 事件处理程序是事件三要素
+    // (1)事件源 事件被触发的对象
+    var btn=document.getElementById('btn');
+    // (2)事件类型 如何触发 什么事件 如鼠标点击(onclick) 鼠标经过
+    // 事件类型 1.onmouseover 鼠标经过 2.onmouseout 鼠标离开 3.onfous onblur 获得失去焦点 
+    // (3)事件处理程序 通过一个函数赋值的方法
+    btn.onclick = function() {
+        alert('哈哈哈');
+    }
+  
+    // 2.改变元素内容
+    // (1)元素.innerText=''    
+    var btn1=document.getElementById('btn1');
+    var div=document.querySelector('div');
+btn1.onclick = function () {
+    div.innerText =getDate();
+}
+function getDate() {
+            var date = new Date();
+            // 我们写一个 2019年 5月 1日 星期三
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dates = date.getDate();
+            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var day = date.getDay();
+            return '今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day];
+        }
+        // (2)元素.innerHTML='' 可以识别html标签 两者可以获取内容
+        var box1=document.getElementById('box1');
+        box1.innerHTML='<strong>哈哈</strong>';
+        console.log(box1.innerText);
+       console.log(box1.innerHTML);//空格和换行标签保留
+    //   (3)改变图片
+    var ldh=document.getElementById('btn2');
+    var zxy=document.getElementById('btn3');
+    var img=document.getElementById('img');
+
+zxy.onclick = function (){
+img.src ='../img/zxy.jpg';
+img.title='张学友';
+}
+ldh.onclick =function () {
+    img.src ='../img/ldh.jpg';
+    img.title='刘德华';
+}
+
+    //    (3)表单修改
+var btn4=document.getElementById('btn4');
+var input1=document.getElementById('input1');
+btn4.onclick =function(){
+    input1.value='被点击了'
+    this.disabled=true;//禁用按钮btn4.disabled=true this指向函数的调用者
+}
+
+
+//(4)样式修改
+var box2=document.getElementById('box2');
+box2.onclick = function(){
+    // this.style.backgroundColor='red';
+    // this.style.width='500px';
+
+// 2.元素.className;
+if( this.className=='box2'){
+    this.className='change';
+}else{
+    this.className='box2';
+}
+
+  
+
+}//让当前元素类名改为change
+
+
+
+    </script>
+</body>
+</html>

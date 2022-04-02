@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul li {
+        float: left;
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        border: 1px solid red;
+       margin-left: -1px;
+      }
+      ul li:hover {
+        z-index: 1;
+        border: 1px solid black;
+      }
+      .div {
+        width: 200px;
+        height: 100px;
+        margin: 200px auto;
+        background-color: purple;
+        white-space: nowrap;
+      }
+      .pic {
+        float: left;
+        width: 30px;
+        height: 100px;
+        background-color: black;
+      }
+      .pic img {
+        height: 100%;
+        width: 100%;
+      }
+      .box{
+        text-align: center;
+      }
+      .box a {
+
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          background-color: #f7f7f7;
+          border: 1px solid #ccc;
+          text-align: center;
+    line-height: 20px;
+    text-decoration: none;
+font-size: 9px;
+      }
+      .box .prev ,.box .next{
+        width: 55px;
+      } 
+      .box .current,.box .elp {
+        background-color: #fff;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div">
+      <div class="pic">
+        <img src="img/a.png" alt="" />
+      </div>
+      ssssssssssssssssssssssssssss
+    </div>
+    <!-- margin负边框值可以让边框重和 -->
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <!-- 行类块元素的巧妙运用 -->
+    <div class="box">
+      <a href="" class="prev">&lt;&lt;上一页</a>
+      <a href="" class="current">2</a>
+      <a href="">3</a>
+      <a href="">4</a>
+      <a href="">5</a>
+      <a href="">6</a>
+      <a href="" class="elp">...</a>
+      <a href="" class="next">&gt;&gt;下一页</a>
+    </div>
+  </body>
+</html>

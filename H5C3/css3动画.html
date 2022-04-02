@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        /* 定义动画 
+        from to 等价于0%和100%*/
+        @keyframes move{
+            0%{
+                /* from */
+                transform: translate(0, 0);
+            }
+            100%{
+                /* to */
+                transform: translate(1000px,0);
+            }
+        }
+        .box{
+            /* 调用动画 */
+            animation-name: move;
+            /* 持续时间 */
+            animation-duration: 5s;
+
+        }
+@keyframes move1{
+    0%{
+        transform: translate(0,0);
+    }25%{
+        transform: translate(1000px,0);
+    }50%{
+        transform: translate(1000px,500px);
+    
+    }75%{
+        transform: translate(0px,500px);
+    }1000%{
+        transform: translate(0,0px);
+    }
+}
+.box1{
+    /* 调用动画 */
+            animation-name: move1;
+            /* 持续时间 */
+            animation-duration: 5s;
+            /* 规定动画速度曲线linear匀速
+            steps(10)分步走到终点
+            */
+            animation-timing-function: ease;
+            /* 何时开始 */
+            animation-delay: 1s;
+            /* 循环几次  infinite无限 */
+            animation-iteration-count: infinite;
+            /* 是否反方向播放 narmal默认的alternate逆播放*/
+            animation-direction: alternate;
+            /* backwards返回起始态，forwards不回*/
+            animation-fill-mode: forwards;
+            /* 暂停 */
+/* animation: 动画名 持续时间 运动曲线 何时开始 循环几次 是否反向 开始结束状态; */
+animation: move1 5s  linear 0s infinite alternate forwards;
+}
+.box1:hover{
+     /* 暂停paused */
+    animation-play-state: paused;
+}
+@keyframes move2{
+
+}
+    </style>
+</head>
+<body>
+    <!-- animation动画变化比过渡更多 -->
+    <div class="box"></div>
+    <div class="box1"></div>
+    <div class="box2">
+
+    </div>
+</body>
+</html>

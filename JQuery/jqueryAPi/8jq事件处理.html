@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+div{
+    width: 200px;
+    height: 200px;
+    background-color: aqua;
+    margin-top: 20px;
+}
+    </style>
+    <script src="../jquery-3.6.0.js"></script>
+    <script> 
+    $(function(){
+        // 1.单一事件注册
+        $(".box1").click(function(){
+            $(this).css("backgroundColor","red");
+        });
+
+
+
+
+
+
+
+        //2.on事件可绑定多个事件ele.on(事件类型，[子元素]，fn)
+  $(".box2").on({
+    click:function(){
+        $(this).css("backgroundColor","red");
+    },
+    mouseenter:function(){
+        $(this).css("backgroundColor","purple");
+    },
+    mouseleave:function(){
+        $(this).css("backgroundColor","aqua");
+    }
+  });//可以绑定多个事件
+  
+
+
+
+
+//   3.事件委托(bind(),live(),delegate()老方法)
+$("ul").on("click","li",function(){
+    alert(1);//点击事件是绑定在ul身上，触发者是li,li通过冒泡
+});
+//on可以对未来添加的添加事件
+$("ol").on("click","li",function(){
+    alert("我是后来的");
+});
+var li=$("  <li>我是后来加上的</li>");
+$("ol").append(li);
+
+
+
+
+
+// 4.off()解绑事件
+$(".box3").on({
+    click:function(){
+        alert("我是点击");
+    },
+    mouseenter:function(){
+        alert("我是经过")
+    }
+});
+// 解绑一个事件
+$(".box3").off("click");
+// 解绑事件委托
+$(".box3").off("click","li");
+
+
+
+
+
+
+
+// 5.one()只会触发一次
+$(".box4").one("click",function(){
+    alert("我只触发一次")
+});
+
+
+// 6.trigger()自动触发
+$(".box5").on("click",function(){
+    alert("我会自动触发");
+
+});
+// (1)元素.事件()
+//(2)元素.trigger("事件")
+// $(".box5").trigger("click");
+
+
+// (2)元素.triggerHandler("事件")
+$("input").on("focus",function(){
+$(this).val("你好吗");
+});
+$("input").triggerHandler("focus");//我不触发事件的默认行为
+    })
+    </script>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <ol>
+       
+    </ol>
+    <div class="box3">
+        <li>sssss</li>
+    </div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <input type="" name="" id="">
+</body>
+</html>

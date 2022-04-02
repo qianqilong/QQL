@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            color: aqua !important;
+            line-height: 1.5;
+            /* 行高没有单位时是font-size的数字倍 */
+            /* a链接有默认样式a{color: blue;} */
+            /* 复合选择器权重叠加 */
+        }
+        li{
+            color: aqua;
+        }
+        ul li{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 重叠性 继承性(子标签会继承文字一类的样式)  优先级 -->
+<ul>
+    <li>1</li>
+</ul>
+</body>
+</html>

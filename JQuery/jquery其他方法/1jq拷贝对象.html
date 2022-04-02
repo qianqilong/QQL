@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.js"></script>
+    <script>
+        // $.extend([deep],target,object1,[objectN]) 
+        // 1.deep设置为true是深拷贝,默认浅拷贝(只是把复杂数据地址拷贝给目标对象)
+        // 3.浅拷贝修改被拷贝的对象会影响获得数据的对象
+        // 2.target是拷贝的对象
+        $(function(){
+    //   1.浅拷贝
+    var target={
+        a:0,
+        msg:{
+        sex:"男"
+    }
+    };
+
+    var obj={
+        id:1,
+        name:"andy",
+        msg:{
+            age:18
+        }
+    }
+    $.extend(target,obj);
+    console.log(target);//把obj数据拷贝给target，如果名字相同会被覆盖
+//浅拷贝修改obj中复杂数据类型值，target会受到影响
+// 2.深拷贝
+var target1={
+    id:0,
+    msg:{
+        sex:"男"
+    }
+};
+$.extend(true,target1,obj);
+console.log(target1);
+//深拷贝时是吧数据完全复制下来并保留自己特有的属性，而且开辟了小世界，不受obj影响
+
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

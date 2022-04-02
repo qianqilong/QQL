@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            float: left;
+            height: 25px;
+            width: 100px;
+            text-align: center;
+            margin: 100px auto;
+        }
+        div button{
+            float: left;
+            width: 25px;
+            height: 100%;
+        }
+        div input{
+            float: left;
+            width: 50px;
+            height: 100%;
+            outline: none;
+            text-align:center;
+        }
+        .sum{
+            float: right;
+        }
+    </style>
+    <script src="../../jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+        $("div button:eq(0),div:eq(4) button:eq(0)").click(function(){
+            // 获取表单中的n点击就--
+     var n=$("div input").val();
+       n--;
+        n<0?n=0:n;
+        //获取价格1
+      var price=$("div").eq(0).html();
+      price=price.substr(1);
+      $("div").eq(2).html("￥"+n*price);
+       //获取价格2
+      var price=$("div").eq(3).html();
+      price=price.substr(1);
+      $("div").eq(5).html("￥"+n*price);
+
+
+
+
+        $("div input").val(n);
+        getSum();
+        });
+
+
+
+        $("div button").eq(1).click(function(){
+             // 获取表单中的n点击就++
+     var n=$("div input").val();
+       n++;
+         //获取价格
+      var price=$("div").eq(0).html();
+      price=price.substr(1);
+      $("div").eq(2).html("￥"+n*price);
+
+ //获取价格
+      var price=$("div").eq(3).html();
+      price=price.substr(1);
+      $("div").eq(5).html("￥"+n*price);
+
+        $("div input").val(n);
+        getSum();
+        });
+
+
+        $("div input").change(function(){
+            //获取个数
+            var n=$("div input").val();
+              //获取价格
+      var price=$("div").eq(0).html();
+      price=price.substr(1);
+            $("div").eq(2).html("￥"+n*price);
+            getSum();
+        })
+        
+
+        
+
+
+        // 计算总额
+  function getSum(){
+      var count=0;
+      var money=0;
+      $("div input").each(function(i,ele){
+          count+=parseInt($(ele).val());
+      });
+      $(".s").text(count);
+      console.log(count);
+      $(".p").each(function(i,ele){
+              money+=parseInt( $(ele).text().substr(1));
+      })
+      $(".pr").text(money);
+      console.log(money);
+  }
+        })
+    </script>
+</head>
+<body>
+    <div>￥12.4</div>
+    <div>
+<button>-</button>
+<input type="text" value="0">
+<button>+</button>
+    </div>
+    <div class="p">￥0</div>
+
+    <div>￥18</div>
+    <div>
+<button>-</button>
+<input type="text" value="0">
+<button>+</button>
+    </div>
+    <div class="p">￥0</div>
+    
+
+    <div class="sum" >
+个数:<span class="s">0</span>  <br>
+价格：<span class="pr"> 0</span>
+    </div>
+    
+</body>
+</html>

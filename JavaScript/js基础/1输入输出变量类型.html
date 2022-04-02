@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <head>
+        <script>
+         var a=prompt('输入框');
+        alert(a);
+        console.log('调试专用');
+        // js中为弱数据类型
+// 前面加0是八进制 0x十六进制
+        var x=010;
+        // 数字型的最大值
+console.log(Number.MAX_VALUE);
+// 数字型的最小值
+console.log(Number.MIN_VALUE);
+// 两者乘2就是无重
+// NaN// NaN
+console.log('武器'+'a');
+// isNaN()是用来判断非数字，是数字false,不是数字turn;
+// \n换行 \t缩进  \b空格
+// 字符串类型外单内双
+// lenght检查字符串的长度
+// +字符串拼接
+console.log('1'+'2');
+// 字符串拼接都会转换为字符串
+console.log('12'+12);//'1212\'
+var var1=undefined;
+console.log(var1+'pink');//undefinedpink
+console.log(var1+1);//NaN
+var var2=null;
+console.log(var2+'pink');//nullpink
+console.log(var2+1);//1
+
+//获取数字类型
+var num=1;
+console.log(typeof num);//number
+// 数据类型的转换
+var num=1;
+num.toString();//数值转换为字符串
+String(num);//String转换
+'a'+1;//拼接型转换
+// 转换为数字型
+   parseInt(prompt());// prompt输出为字符型,转换为数字型
+   parseFloat('3.121');//保留小数
+   Number('645');
+   '11'-0;//- * /会让字符型转换为数字型
+//转换为布尔型
+Boolean();//'' 0 NaN null undefined会转换为false,其他为true
+ console.log(0.1+0.2);//0.3000000001不可直接用浮点数运算
+//  前置++先加1，后运算，后置++先返回原值后+1
+// a=10
+// a++ +10=20 ++a+10=21
+// 比较运算符 ==号会把字符型转换为数字型
+// 18=='18';true
+//18==='18';flase 全等号，要求数值类型相同
+// 逻辑运算的短路
+// true||false++;第一个为true第二个不参加运算
+//0&&12;0后面的12不看
+//逻辑与比或高
+
+//三元运算符
+//var s=n>5? 1:2;
+
+// switch(表达式){  表达式的值必须与value1全等    switch直接跳到执行值 switch 是固定值，if ease 是范围值
+// case value1:执行语句;
+// break;
+//default:最后语句;
+var sum=0;
+for(var i=1;i<10;i++){
+sum+=i;
+}
+
+var s='';
+for(var i=1 ;i <= 5; i++){//负责行
+        for(var j=i ;j <= 5; j++){//负责一行多少个 倒三角
+s=s+'1';
+        }
+        s=s+'\n';
+}
+
+//do while 先执行一次循环体，在来判断 ，循环体至少执行一次
+//continue跳出本次循环 ，break跳出循环
+// }
+
+    </script>
+           
+</head>
+<body>
+    
+</body>
+</html>

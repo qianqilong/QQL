@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;
+        padding: 0;
+        }
+       
+        /* 浮动用于消除两个盒子距离(行内块元素之间有间距) 
+        1，浮动元素会脱离标准流(不在保留原本的位置)
+        */
+    .div2{
+        width: 50px;
+            height: 50px;
+       
+            background-color: aqua;
+            float: left;
+            /* 浮动的盒子与原来的不在一个平面 */
+            /* 浮动的盒子不会影响前面的标准流 */
+    }
+    .div3{
+        width: 100px;
+            height: 100px;
+            background-color: pink;    
+    }
+    /*2， 浮动的盒子都在一行对齐 */
+    .div1{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            float:right;
+        }
+        .left{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+           float:right;
+        }
+        /* 3，浮动元素有行内块元素的特点(可以设置宽高)
+        一般用一个父盒子装多个浮动盒子 */
+        .BOX{
+            width: 1200px;
+            height: 460px;
+            background-color: pink;
+            margin: auto;
+        }
+        .left1{
+            float: left;
+width: 230px;
+height: 460px;
+background-color: purple;
+
+        }
+        .right1{
+            float: right;
+            width: 970px;
+            height: 460px;
+            background-color: aqua;
+        }
+
+
+        /* 清除浮动，父盒子不方便设置高度，
+        浮动元素不占右位置导致父盒子高度为0
+        1.额外标签法 clear:both麻烦
+         2.父元素添加overflow
+         3.after伪元素法
+         4.双伪元素清除浮动
+        */
+        .box2{
+      background-color: pink;
+      /* 2.父元素添加overflow */
+    
+
+        }
+        .clearfix:after{
+            /* ********** 重要 */
+              /*3.overflow: hidden; */
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .clearfix{
+            
+            *zoom:1;
+        }
+        .claearfix::before{
+            content: "";
+            display: table;
+            /* 4.双伪元素清除浮动
+              */
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        .clearfix{
+            *zoom:1;
+        }
+        .clear{
+            /* 1.额外标签法 clear:both麻烦 */
+            clear:both;
+        }
+        .dm{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            float: left;
+        }
+        .em{
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮动 -->
+<div class="div1">
+    青龙大人
+</div>
+<div class="left">白虎大人</div>
+<!-- 覆盖 -->
+<div class="div2"></div>
+<div class="div3"></div>
+<!-- 父盒子布局 -->
+<div class="BOX">
+    <div class="left1">左侧</div>
+    <div class="right1">右侧</div>
+</div>
+<!-- 清除浮动 -->
+<div class="box2 clearfix">
+<div class="dm">1</div>
+<div class="em">2</div>
+<!-- 1.额外标签法 -->
+<!-- <div class="clear"></div> -->
+</div >
+
+</body>
+</html>

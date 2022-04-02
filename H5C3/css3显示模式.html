@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            display: block;
+            /* 链接变成块级元素 */
+    width: 150px;
+    height: 50px;
+background-color: red;
+        }
+div{
+    display: inline;
+    /* 转换为行类元素 */
+    background-color: aqua;
+}
+span{
+    display: inline-block;
+    /* 转换成行类块元素 */
+    background-color: aqua;
+    width: 150px;
+    height: 50px;
+}
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>1</div>
+    <!-- h1~h6, div,p,ul,ol,li块级元素
+    独占一行，可以改宽度和高度
+    块级元素中可以放块级元素
+    文字类块级元素不可以放块级元素
+    div(display:inline)div
+ -->
+ <a href="#">1</a>
+  <!-- a,strong,b,span,ins行类元素
+    一行多个，不可直接设置高宽
+    行类元素只可以放文本其他行类元素
+    a可以转换块级元素(display:block)
+ -->
+ <span>1</span>
+ <span>1</span>
+ <!-- img,input,td行类块元素
+ 一行多个，多个之间有间距，可直接设置高宽
+-->
+</body>
+</html>

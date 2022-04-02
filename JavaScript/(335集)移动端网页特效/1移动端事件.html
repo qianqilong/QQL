@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,
+    initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" >
+    <title>Document</title>
+  <style>
+     div{
+          width: 200px;
+          height: 200px;
+          background-color: aqua;
+          margin-top: 20px;
+      }
+      .box1{
+          position: relative;
+      }
+  </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box1"></div>
+    <script>
+        // 1.touch触屏事件
+        // 2.触摸的事件对象(TouchEvent)
+        // (1)touchstart 触摸到元素触发
+         var box=document.querySelector('.box');
+         box.addEventListener('touchstart',function(e){
+             console.log('我摸了你');
+            //  (2.1)touches触摸屏幕的手指个数
+             console.log(e.touches);
+            //  (2.2)targetTouches触摸Dom元素的手指个数
+            console.log(e.targetTouches[0]);//触摸dom的第一个手指
+             //  (2.3)changedTouches触摸手指状态发生改变的列表
+             console.log(e.changedTouches);
+         });
+        // (2)touchmove 手指在dom元素上滑动触发
+        box.addEventListener('touchmove',function(){
+             console.log('我继续摸');
+         });
+        // (3)touchend手指在dom元素上离开触发
+        box.addEventListener('touchend',function(e){
+             console.log('我离开了');
+               //  (2.3)changedTouches触摸手指状态发生改变的列表
+               console.log(e.changedTouches);//其他在离开不会触发
+         });
+     
+
+
+
+
+    
+    
+    </script>
+</body>
+</html>

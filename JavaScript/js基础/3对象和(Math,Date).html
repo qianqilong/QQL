@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       
+        //1.创建对象
+        var obj = {
+            name: 'pink',
+            age: 18,
+            sex: 'male',
+            sayHi: function () {
+                console.log('hi');
+            }
+        }
+        //1.里面的属性用键対的形式
+// 2. 多个属性用逗号隔开
+// 3.方法冒号后面跟一个匿名函数
+console.log(obj.name);
+console.log(obj['age']);
+obj.sayHi();
+// 1.对象.属性
+// 2.对象['属性']
+
+// 2.创建对象
+var obj1=new Object();
+obj1.name='pink';
+obj1.age=22;
+obj1.sayHi=function(){
+    console.log('hi');
+}
+//3.创建对象(构造函数:里面封装对象,首字母大写)
+ function CreateAnObject(){
+this.name=name;
+this.age1=age1;
+this.sex=sex;
+this.sing=function(sang){
+    console.log(sang);
+}
+ }
+ var pink=new CreateAnObject('pink','18','male');
+// new 构造函数在内存中创建了一个空对象
+// this 指向空的对象
+// 执行构造函数代码
+// 返回对象
+
+// 遍历对象
+for(var i in pink){
+    console.log(i);//属性名
+    console.log(pink[i]);//属性
+}
+
+
+
+//内置对象js自带对象
+var myMath={
+    PI:3.1415,
+    max:function(){
+        var max=arguments[0];
+        for(var i=0;i<arguments.length;i++){
+              if(arguments[i]>max) {
+                  max=arguments[i];
+              }
+          }
+          return max;
+    }
+
+}
+
+console.log(myMath.max(1,2,3,4));
+
+Math.random();
+// 随机数对象0<=Math.random<1; 
+//取两个数之间的随机整数
+function getRandomIntInclusive(min, max) {
+ //Math.floor() 返回小于或等于一个给定数字的最大整数。
+  return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值 
+}
+
+
+
+//Date是构造函数，用来创建日期对象
+//强烈建议不要使用Date构造函数（和Date.parse，它们是等效的）解析日期字符串。
+// 参数写法 2019,1,1  '2019-10-10 8:8:8';
+var date=new Date();
+// date.getFullYear date.getMonth date.getDate date.getDay(周日0 ) 年月 日
+// 1.date.Object()  date.getTime()获取总毫秒
+// 2. +new Date();
+// 3. Date.now();
+// 日期的格式化
+
+
+//倒计时(毫秒时间戳)
+function theCountdown(time){
+    var nowTime  = +new Date();//返回当前时间的总毫秒
+    var inputTime = +new Date(time);//用户输入
+    var times=(inputTime - nowTime)/1000; 
+    var d=parseInt(times / 60 / 60 /24);
+    d=d<10?'0'+d:d;
+    var h=parseInt(times / 60 / 60 %24);
+    var m=parseInt(times / 60 % 60);
+    var s=parseInt(times % 60);
+    return d+'天'+h+'时'+m+'分'+s+'秒'
+}
+
+
+
+//Array数组是构造函数
+//括号1个数为长度，多个数为数组
+var arr1=new Array();
+//检测是否为数组(1)instanceof (arri instanceof Array);返回布尔值
+// (2)Array.isArray('数组')
+// 1.push数组末尾添加数组元素arr.push(4,....);返回值数组长度
+// 2.unshift数组开头添加元素 arr.unshift(4,....);返回值数组长度
+// 3.pop删除数组最后一个元素arr.pop();返回删除的元素
+// 4.shift删除数组第一个元素arr.shift();返回删除的元素
+// 5.reverse翻转数组arr.reverse();
+// 6.sort排序arr1.sort(function(a,b){return a-b;});return b-a 降序
+// 7.(1)indexOf返回第一个满足条件数组索引 arr.indexOf(数组元素)，无 返回-1;
+//(2)lastIndexOf返回最后一个满足条件数组索引 arr.lastIndexOf(数组元素)，无 返回-1;
+function unique(arr){
+    var newArr=[];
+    for(var i=0;i<arr.length;i++){
+        if(newArr.indexOf(arr[i])==-1){
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}//去重
+//8.(1)toString转换为字符串 arr.toString();
+// (2)join转换为字符串arr.join(分割符)
+
+
+
+//基本包装类型字符串
+var str='ass';
+str.length;
+//把简单数据类型包装成复杂数据类型
+var temp=new String('ass');
+str = temp;
+temp=null;
+//字符串的不可变性 改变其实是改变了地址 占用内存
+// 1.(1)indexOf返回第一个满足条件字符位置 str.indexOf('a')，无 返回-1;
+// (2)indexOf返回最后一个满足条件字符位置 str.indexOf('a')，无 返回-1;
+// 查找字符串中所有o的位置
+var str = "abcoasdaosadaosado";
+var index=str.indexOf('o');
+while(index!=-1){
+    console.log(index);
+    index=str.indexOf('o',index+1);//从index后一个查找111
+}
+// 2.(1)charAt根据位置返回字符str.charAt()
+// (2)charCodeAt返回字符串的Accii码str.charCodeAt()
+// (3)str[0]根据位置返回字符
+// 出现每个字符出现次数
+
+var stra='asdvsadgfdgadssdasadasd';
+var o={};
+for(var i=0;i<srta.length;i++){
+var chars= stra.charAt(i);
+if(o[chars]){
+o[chars]++;
+}else{
+    o[chars]=1;
+}
+}
+var max=0;
+for( var l in o){//遍历
+
+}
+// 3.concat拼接字符串str.concat('asd')
+//4.(1)substr截取字符串str.substr(开始位置，取得个数)
+// (2)slice截取字符串str.substr(start,end);
+// 5.replace替换字符串str.replace('被替换'，'替换的值')
+var straa='asdadsafa';//替换字符串中的a
+while(straa.indexOf('a')!==-1){
+    straa.replace('a','$');
+}
+// 6.split字符串转换为数组str.split(分隔符)
+// 7.toUpperCase字符串转换为大写
+// 8.toLowerCase转换为小写
+
+
+
+// 简单数据类型和复杂数据类型
+// null返回值是空的对象，变量为对象可以赋值null
+// 1.栈 放简单数据类型(存值)(存复杂数据类型的地址)
+// 2.堆 放复杂数据类型(存放栈中指向的数值)
+// 简单数值类型传参是传值，不相互影响
+  // 复杂数据类型传参，传达的是地址
+//   两者操作的是同一对象
+  function Person(name) {
+            this.name = name;
+        }
+
+        function f1(x) { // x = p
+            console.log(x.name); // 2. 这个输出什么 ?  刘德华   
+            x.name = "张学友";
+            console.log(x.name); // 3. 这个输出什么 ?   张学友
+        }
+        var p = new Person("刘德华");
+        console.log(p.name); // 1. 这个输出什么 ?   刘德华 
+        f1(p);
+        console.log(p.name); // 4. 这个输出什么 ?   张学友
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

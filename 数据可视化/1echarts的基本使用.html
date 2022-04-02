@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+    </style>
+    <script src="js/echarts.js"></script>
+
+</head>
+
+<body>
+    <div class="box">
+        <script>
+            // 常见的js可视化库
+            // 1.D3.js
+            // 2.ECharts.js 百度出品
+            // 3.Highcharts.js
+
+
+
+            //ECharts的实例化，准备一个盒子装起来
+            var myChart = echarts.init(document.querySelector('.box'));
+              //设置配置选项
+            var option = {
+        title: {
+          text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+          data: ['销量']
+        },
+        xAxis: {
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [
+          {
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+          }
+        ]
+      };
+
+      // 实例对象.setOption();
+      myChart.setOption(option);
+        </script>
+    </div>
+</body>
+
+</html>

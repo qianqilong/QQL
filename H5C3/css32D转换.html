@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 2d移动 */
+       .box1{
+           width: 200px;
+           height: 200px;
+           background-color: aqua;
+           transform: translate(20px,20px);
+           /* transform: translateX(20px);
+           transform: translateY(20px);
+           2D转换不会影响其他盒子的位置
+            */
+            
+       } 
+       .box2{
+           width: 200px;
+           height: 200px;
+           background-color: aquamarine;
+           transform: translate(50%,50%);
+           /* 百分号移动距离是盒子的宽和高 */
+       }
+      .box3{
+           width: 200px;
+           height: 400px;
+           background-color: blue;
+           margin:10px;
+           transition: all 0.3s;
+           /* 京东的图片上浮 */
+       }
+       .box3:hover{
+           transform: translate(0,-5px);
+       }
+       .box4{
+           position: relative;
+           width: 500px;
+           height: 500px;
+           background-color: aquamarine;
+       }
+       .box4 p{
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%,-50%);
+           width: 200px;
+           height: 200px;
+           background-color: brown;
+           /* 让盒子居中 */
+       }
+         /* 2d移动 */
+
+
+         /* 2D旋转 */
+         .box5{
+width: 200px;
+height: 200px;
+
+background-color: black;
+transition: all 0.5s;
+         }
+         .box5:hover{
+            transform: rotate(40deg);   
+         }
+.box6{
+    /* transform-origin:更换旋转中心 */
+    width: 200px;
+height: 200px;
+background-color: blueviolet;
+
+transform-origin: left bottom;
+transition: all 0.5s;
+}
+.box6:hover{
+    transform: rotate(200deg);
+}
+
+          /* 2D旋转 */
+
+          /* 2D缩放 */
+          .box7{
+           margin: auto;
+              width: 200px;
+              height: 200px;
+              background-color: cadetblue;
+              transition: all 0.5s;
+              transform-origin: left bottom;
+          }
+.box7:hover{
+   
+    transform: scale(2,2);
+}
+/* scale优势可设置中心点，可不会影响其他盒子 */
+           /* 2D缩放 */
+           /* transform:translate rotate  scale 按顺序移动，旋转，缩放 */
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4">
+   <p></p>
+</div>
+
+
+
+<div class="box5"></div>
+    <div class="box6"></div>
+
+
+
+    <div class="box7"></div>
+</body>
+</html>

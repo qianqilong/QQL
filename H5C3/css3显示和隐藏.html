@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* display:none;隐藏元素  display :block显示*/
+      .block {
+         
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+      .none {
+        display: none;
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    .vsibility{
+        visibility: hidden;
+        /* visible显示 */
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+    
+    }
+    .overflow{
+overflow:scroll ;
+/* hidden:溢出不显示，scroll:滚动条，auto:跟条件显示滚动条 */
+width: 20px;
+height: 20px;
+font-size: 10px;
+background-color: blue;
+    }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="none">隐藏</div>
+    <div class="vsibility">隐藏</div>
+    <div class="block">显示，pink他消失了，不占位置；aque他是visibility,仍然占有位置</div>
+    <div class="overflow">我溢出了</div>
+  
+  </body>
+</html>

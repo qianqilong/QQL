@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.box{
+    perspective: 500px;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 100px auto;
+    transform-style: preserve-3d;
+    transition: all .4s;
+
+}
+.front
+,.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 200px;
+    font-size: 30px;
+    color:#fff;
+    
+}
+.front{
+    background-color: aqua;
+    /* 加上这个才可以显示反面 */
+   backface-visibility: hidden;
+
+    z-index: 1;
+}
+.back{
+    background-color: blue; 
+    transform: rotateY(180deg);
+}
+.box:hover{
+    transform: rotateY(180deg);
+}
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="front">正面</div>
+        <div class="back">反面</div>
+    </div>
+</body>
+</html>

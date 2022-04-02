@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 0;
+            height: 0;
+            border-top: 10px solid pink;
+            border-left: 10px solid green;
+            border-right: 10px solid aqua;
+            border-bottom: 10px solid black;
+        }
+        .box2{
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color:  pink;
+           
+        }
+.box3{
+position: relative;
+    width: 120px;
+    height: 249px;
+    background-color: aqua;
+}
+.box3 span{
+    position: absolute;
+   top: -20px;
+   right: 15px;
+   width: 0;
+   height: 0;
+   line-height: 0;
+   font-size: 0; 
+   border: 10px solid transparent;
+   border-bottom-color: aqua;
+}
+.box4{
+    /* 直角三角形 */
+    width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-left: 0px solid green;
+            border-right: 10px solid aqua;
+            border-bottom: 0 solid black;
+}
+.price{
+    width: 160px;
+    height: 24px;
+    border: 1px solid red;
+   line-height: 24px;
+   text-align: center;
+}
+.ms{
+    position: relative;
+    float: left;
+    width: 90px;
+    height: 100%;
+    background-color: red;
+    color: #fff;
+    font-weight:700;
+}
+.ms i{
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-color: transparent #fff transparent transparent;
+    border-style: solid;
+border-width: 24px 10px 0 0;
+}
+.or{
+    font-size: 10px;
+    color: gray;
+    text-decoration: line-through;
+}
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3">
+        <span> </span>
+    </div>
+    <div class="box4"></div>
+    <div class="price">
+<span class="ms">￥1650
+    <i></i>
+</span>
+<span class="or">￥3000</span>
+    </div>
+</body>
+</html>

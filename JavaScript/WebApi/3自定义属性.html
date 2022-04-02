@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button >1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button>
+   <div id="de" name="div" class="1"data-time="1"></div>
+   <script>
+       //1.排他思想
+       var btns=document.querySelectorAll('button');
+       for(var i=0;i<btns.length;i++){
+           btns[i].onclick =function(){
+               for(var j=0;j<btns.length;j++){
+                btns[j].style.backgroundColor=''
+               }
+               this.style.backgroundColor='pink'
+           }
+       }
+       
+    //    2.获取元素的属性值
+var div=document.querySelector('div');
+// (1)元素.属性 获取元素自带属性
+console.log(div.id);
+// (2)元素.getAttribute('属性') 获取自定属性
+console.log(div.getAttribute('name'));
+
+// 3.设置属性值
+// (1)元素.属性 =''
+div.id='clas';
+//(2)元素.setAttribute('属性',值);
+div.setAttribute('name',1);
+div.setAttribute('class','foot')
+// (3)移除属性元素.removeAttribute
+div.removeAttribute('id');
+// (4)1.h5中data-开头是自定义属性
+// 2.h5新增div.dataset.index div.data['index']
+console.log(div.dataset.time);
+// 3.如果data后面跟了多个横线 要用驼峰命名(兼容性不行)
+
+   </script>
+</body>
+</html>

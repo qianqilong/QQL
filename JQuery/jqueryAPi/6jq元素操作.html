@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 1.遍历元素each(fn(index,domEle)) domEle是dom元素对象
+            var arr=["red","green","blue"];
+            var sum=0;
+            $("div").each(function(i,domEle){
+                //each自己给div命个数
+                console.log(domEle);//dom对象
+                $(domEle).css({
+                     width:200,
+                 height:200,
+                 backgroundColor:arr[i]
+                });
+                sum+=parseInt($(domEle).text());
+                console.log(sum);
+            });
+
+
+
+
+            // 2.$.each()遍历元素 主要是处理数据,数组，对象等用这个
+            $.each(arr,function(i,ele){
+                console.log(i);
+                console.log(ele);
+            });
+
+
+
+
+            //3.创建元素$("<li><li>")
+                var li1=$("<li>我是添加的(内部)</li>");
+                    var li2=$("<li>我是添加的(内部)</li>");
+            //  (1)内部添加
+        $("ul").append(li1);//放到后面，相当于appendchild();
+        $("ul").prepend(li2);//放到前面
+
+
+
+        //(2)外部添加
+        var div=$("<div>222</div>");
+        var div1=$("<div>222</div>")
+            $("div").eq(0).before(div);//放前面
+            $("div").eq(3).after(div1);//放后面
+
+
+            // (3)删除元素
+        // remove删除匹配元素
+        $("div").eq(2).remove();
+        //empty()删除匹配元素的子节点==.html("");
+
+        })
+    </script>
+</head>
+<body>
+  <div class="box1">1
+     
+  </div>
+  <div class="box2">2
+  </div>
+  <div class="box3">3</div>
+  <ul>
+      <li>我本来就有</li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 10000px;
+        }
+    .static{
+        width: 200px;
+    height: 200px;
+    background-color: aqua;
+    }
+.relative{
+    position: relative;
+    top:50px;
+    left:200px;
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+}
+.absolute{
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 200px;
+   height: 200px;
+   background-color: blueviolet; 
+}
+.fixed{
+    position: fixed;
+    top: 300px;
+    right: 10px;
+    width: 200px;
+    height: 200px;
+    background-color: aquamarine;
+
+}
+.sticky{
+    position: sticky;
+    top: 10px;
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    color: #fff;
+}
+.z-index{
+    position: fixed;
+    top: 200px;
+    left: 20px;
+    z-index: 1;
+    background-color: green;
+    width: 200px;
+    height: 200px;
+}
+.box{
+    position: absolute;
+    left: 50%;
+    /* 居中法：父元素宽一半 ,margin-left*/
+    margin-left: -100px;
+    width: 200px;
+    height: 200px;
+    background-color: rebeccapurple;
+}
+    </style>
+</head>
+<body>
+    <!-- 可以让盒子固定在某一个位置或者自由移动 
+    1.定位模式 2.边偏移
+    position :static , relative,absolute, 
+    top buttom left right边偏移
+    -->
+    <div class="z-index">我加了z-index我就最大了，现在我压着你们了</div>
+    <div class="static">我是静态定位，无边偏移</div>
+    <div class="relative">我是相对定位，我以自己位置偏移，我的位置仍然保留，我还是绝对定位的爹</div>
+    <div class="absolute">我是绝对定位，我以父亲或祖先或浏览器偏移，我的父亲或祖先必须定位(去掉静态)，那个有定位听那个(上一级)，我不占用原来位置</div>
+    <div class="fixed">我是固定定位，你滚不走我，我飘起来了，我父亲都管不了我，打我啊！！！！！！！！！！！！</div>
+    <!-- fixed贴着版心left50%，margin-left或right负值 -->
+    <div class="sticky">我是粘性定位，我占用原来的位置，我到离头10px就滚不动了</div>
+    <!-- z-index控制盒子分前后次序，数值越大盒子越靠上 -->
+  <div class="box">我居中了，哈哈哈哈哈哈哈哈哈哈！！！！！！！！！！！</div>
+</body>
+</html>

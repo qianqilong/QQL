@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // JSON和XML是两种数据交换格式
+    //   xml是一款标记语言，是设计用来传输和存储数据
+
+
+    // JSON 用来表示javascript对象和数组的，本质就是一个字符串用来传输和存储数据
+    // 1.JSON数据结构可以是对象结构{key:value,key:value}key必须是使用英文双引号包裹的字符串，字符串必须用双引号包裹 value不可放函数
+    // 2.JSON数据结构可以是数组结构[ 数字，对象等]
+   //3.z作用计算机和网络之间传输数据
+
+   
+
+//    JSON字符串转换成JS对象的格式用JSON.parse(); 反序列化
+   var jsonStr='{"a":1,"b":"cc"}';
+   var obj=JSON.parse(jsonStr);
+   console.log(obj);
+//    js对象转换成JSON字符串JSON.stringify() 序列化
+   var obj1={a:'hello',b:'world',c:'!'};
+   var jsonStr1=JSON.stringify(obj1);
+   console.log(jsonStr1);
+
+
+
+
+
+   var xhr=new XMLHttpRequest();
+   xhr.open('GET','http://www.liulongbin.top:3006/api/getbooks');
+   xhr.send();
+   xhr.onreadystatechange=function(){
+       if(xhr.readyState==4&&xhr.status==200){
+           console.log(xhr.responseText);//xhr.responseText是JSON格式的字符串
+           var jsonStr2=JSON.parse(xhr.responseText);
+           console.log(jsonStr2);
+       }
+   }
+    </script>
+</body>
+</html>

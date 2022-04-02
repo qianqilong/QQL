@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // js是单线程，防止等待，创建了多线程 出来同步，异步,现在js是单线程，可以创建多任务，同时执行
+console.log(1);
+setTimeout(function(){
+    console.log(3);
+},0);
+console.log(2); 
+// 其中同步任务先执行console.log(1); setTimeout  console.log(2); 执行栈先执行，回调函数放入执行队列，最后放入执行栈中，主线程不端获取任务，执行，在获取， 事件循环event
+// 异步任务回调函数  异步进程的处理
+
+    </script>
+</body>
+</html>

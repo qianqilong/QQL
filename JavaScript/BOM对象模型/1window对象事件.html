@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    console.log(window);
+    // 1.窗口加载事件
+    // (1)先加载dom文档
+   window.addEventListener('load',function(){
+        var btn=document.querySelector('button');
+        btn.addEventListener('click',function(){
+            // alert('我在上面');
+        })
+    })
+   document.addEventListener('DOMContentLoaded',function(){
+// alert('我更快');
+// load等页面所有内容全部加载完
+// DOMContentLoaded dom加载完，不包含图片，样式表等
+   })
+</script>
+<body>
+    <!-- 1.什么是BOM
+        (1)浏览器对象模型，浏览器交互效果
+    2.浏览器的顶级对象windons
+    (1)BOM顶级对象windons
+    (2)js访问浏览器窗口的接口
+    (3)windons是全局变量
+    (4)window调用时省掉了(window里有name不用申明)
+    3.页面加载事件以及注意事项
+    4.两种定时器函数的区别
+    5.js执行机制
+    6.能够知道location对象完成页面之间跳转
+    7.知晓navigator对象涉及的属性
+    8.能够使用history方法刷新页面 -->
+
+
+
+
+
+
+
+<button>点我</button>
+<button class="btn1">停止</button>
+<div class="div1" style="width: 200px;height:200px;background-color:red;"></div>
+<button class="begin">开启定时器</button>
+<button class="stop">停止定时器</button>
+<script>
+// 2.调整窗口大小resize事件
+// (1)window.innerWidth浏览器宽度
+var div1=document.querySelector('.div1');
+
+    window.addEventListener('resize',function(){
+        console.log(window.innerWidth);
+        var w=window.innerWidth;
+        if(w<800){
+           div1.style.display='none';
+
+        }else
+        div1.style.display='block';
+    })
+
+
+
+
+
+
+    // 3.定时器
+    //(1) window.setTimeout(调用函数，[延时毫秒])win可省
+    // (2)定时器一般都加名字,定时器一般叫回调函数callback
+  var time1= setTimeout(function(){
+console.log('时间到了');
+    },3000);
+//  (3)清除定时器
+var btn1=document.querySelector('.btn1');
+btn1.addEventListener('click',function(){
+  clearTimeout(time1);
+});
+// (4)window.setInterval(调用函数，[延时毫秒])
+// setInterval(function(){
+//      console.log('我一秒出现一次');
+// },1000);
+var times1;
+var begin=document.querySelector('.begin');
+var stop=document.querySelector('.stop');
+begin.addEventListener('click',function(){
+    times1=setInterval(function(){
+    console.log('开始了');
+},1000);
+});
+
+stop.addEventListener('click',function(){
+    clearInterval(times1);
+})
+
+
+// 4.this的指向问题
+// (1)全局中调用
+console.log(this);
+function fn(){
+    console.log(this);
+}
+window.fn;
+setTimeout(function(){
+console.log(this);
+},1000);
+// (2)方法中调用
+var o={
+s:function(){
+    console.log(this);
+}
+};
+o.s();
+// (3)构造函数中调用
+function Fun(){
+    console.log(this);
+}
+var fun=new Fun();
+</script>
+</body>
+</html>
