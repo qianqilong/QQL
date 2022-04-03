@@ -13,6 +13,32 @@
         // master为主分支(github创建了mian)
         // git branch 罗列出所有分支列表
         // git branch login 创建了一个功能分支还是mian分支
+        // git checkout login 切换到指定分支
+        // -b 分支名 表示创建一个新分支(对分支的操作不会影响主分支，合并后才变化)
+        // checkout 切换分支
+    //  git   checkout -b  分支名(创建并切换分支)
+    // 合并分支
+    // 1.切换到主分支 git checkout master
+    // 2.合并分支 git merge login (把login合并到主分支中)
+    // 3.删除分支 git branch -d login(删除login分支 要切换主分支,没有合并到主分支会报错)
+    
+    //分支遇到冲突
+    // 手动解决冲突
+
+        //  远程分支操作
+    // git push -u 远程仓库的别名 本地分支名：远程分支名
+    // git push -u origin payment(本地分支名和远程分支名一致)
+//    如果本地远程仓库包含了这个分支，就直接push
+// git remote show 远程仓库名
+
+// 下载远程仓库分支
+// git checkout (远程仓库名)--本地仓库分支与远程仓库分支名相同
+// git checkout -b 本地分支名 远程仓库名/远程分支名(需要命名)
+
+
+//从远程分支拉取最新代码git pull在哪个分支运行
+
+// 删除远程仓库分支git push 远程仓库名() --delete 远程分支名()
     </script>
 </body>
 </html>
