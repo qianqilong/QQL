@@ -92,10 +92,49 @@
 
     //第一次远程提交
     // (1)git remote add origin https://github.com/qianqilong/QQL.git
-    // (2)git push -u origin main(githup在创建仓库时会生成mian分支要进行改名)
+    // (2)git push -u origin main(githup在创建仓库时会生成mian分支要进行改名)git branch -m master
 
-    //第二次
+    //    注意事项：(每次提交要改为登陆)
+    // git config --global --unset http.proxy 
+    // git config --global --unset https.proxy
+
+
+
+    //第二次远程提交
     // git push
+    // (1)git add .
+    // (2)git commit -m
+    // (3)git push
+
+
+
+
+
+
+
+
+
+    //SSH key免登陆实现本地仓库与github之间的传播
+//   (1)  ssh-keygen -t rsa -b 4096 -C "1959377950@qq.com"
+//  (2)  生成.ssh文件夹，打开id_rsa.pub,复制内容
+//   (3) 点击头像-settings-SSH and GPG Keys-New SSH Key
+// (4)粘贴到Key对应的文本框中
+// 测试是否成功ssh -T git@github.com 输入yes 出现自己的用户名就成功
+
+
+
+// 1.新建一个本地仓库和远程仓库
+// 2.切换为SSH方式
+// 3.git remote add origin git@.......
+// 4.git push -u origin main(分支不同时记得改名)git branch -m master
+
+// gitee仓库:git@gitee.com:qian001005/qianqilong.git
+// git remote rm qianqilong-/-QQL(删除对应的远程库)
+// git remote add blue git@gitee.com:qian001005/qianqilong.git (新建一个远程库并命名)
+// git remote -v远程仓库
+
+// git clone 远程仓库地址 克隆到本地
+
     </script>
 </body>
 </html>
