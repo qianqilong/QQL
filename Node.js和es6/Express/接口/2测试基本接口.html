@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.6.0.js"></script>
+</head>
+<body>
+    <button>发起get请求</button>
+    <button>发起post请求</button>
+    <button>发起预检请求</button>
+    <button>发起JSONP请求</button>
+
+    <script>
+var xhr =new XMLHttpRequest();
+var btn=document.querySelectorAll('button');
+// 获取get请求
+btn[0].addEventListener('click',function(){
+  xhr.open('GET','http://127.0.0.1/api/get?id=20');
+    xhr.send();
+    xhr.onreadystatechange=function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                console.log(xhr.responseText);
+            }
+        }
+});
+// 获取post请求
+$('button').eq(1).on('click',function(){
+    $.ajax({
+        type:'POST',
+        url:'http://127.0.0.1/api/post',
+        data:{
+            name:2,
+            age:29
+        },
+        success:function(res){
+            console.log(res);
+        }
+    })
+})
+//发起预检请求
+$('button').eq(2).on('click',function(){
+    $.ajax({
+        type:'DELETE',
+        url:'http://127.0.0.1/api/delete',
+        success:function(res){
+console.log(res);
+        }
+    })
+})
+//发请jsonp请求
+$('button').eq(3).on('click',function(){
+    $.ajax({
+        type:'GET',
+        url:'http://127.0.0.1/api/jsonp',
+        dataType:'jsonp',
+        success:function(res){
+            console.log(res);
+        }
+    })
+})
+
+    </script>
+</body>
+</html>

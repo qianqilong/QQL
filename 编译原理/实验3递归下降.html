@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div>输入内容</div>
+    <input type="text" id="inputExpress" />
+    <input type="button" value="提交" id="inputInput" />
+    <div>输出结果</div>
+    <textarea id="textareaInput"></textarea>
+
+    <script>
+        let printf = function() {
+            let inputText = document.getElementById('textareaInput')
+
+            printf = {
+                log: function(str) {
+                    inputText.value += str + '\n'
+                },
+                clear: function() {
+                    inputText.value = ''
+                    inputText.value = ''
+                }
+            }
+        }
+
+        function getResult(strExpression) {
+            let isValid = true,
+                nowI = 0
+            E()
+            return isValid
+
+            function E() {
+                printf.log('E=>TG')
+                T()
+                G()
+            }
+
+            function T() {
+                printf.log('T=>FS')
+                F()
+                S()
+            }
+
+            function G() {
+                printf.log('G=>ε')
+                if (strExpression[nowI] == '+') {
+                    nowI++
+                    printf.log('G >+TG')
+                    T()
+                    G()
+                } else if (strExpression[nowI] == '-') {
+                    nowI++
+                    printf.log('G >-TG')
+                    T()
+                    G()
+                }
+            }
+
+            function F() {
+                if (strExpression[nowI] == '(') {
+                    nowI++
+                    E()
+                    if (strExpression[nowI] == ')') {
+                        nowI++
+                        printf.log('F=>(E)')
+                    } else flag = false
+                } else if (strExpression[nowI] == 'i') {
+                    printf.log('F=>i')
+                    nowI++
+                } else isValid = false
+            }
+
+            function S() {
+                printf.log('S=>ε')
+                if (strExpression[nowI] == '*') {
+                    nowI++
+                    F()
+                    S()
+                } else if (strExpression[nowI] == '/') {
+                    nowI++
+                    F()
+                    S()
+                }
+            }
+        }
+        window.onload = function() {
+            let inputExpress = document.getElementById('inputExpress'),
+                inputInput = document.getElementById('inputInput')
+            printf()
+            inputInput.onclick = function() {
+                printf.clear()
+                printf.log(getResult(inputExpress.value) ? 'Accepted' : 'error')
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

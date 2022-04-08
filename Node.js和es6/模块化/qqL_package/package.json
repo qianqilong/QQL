@@ -1,0 +1,12 @@
+{
+    "name": "itheima-qql",
+    "version": "1.0.0",
+    "main": "index.js",
+    "description": "提供了格式化时间",
+    "keywords": [
+        "qql",
+        "dataFormat",
+        "escape"
+    ],
+    "license": "ISC"
+}
