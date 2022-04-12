@@ -4,18 +4,26 @@
 const db = require('../dbmysql/index');
 // 2.安装bcryptjs npm i bcryptjs@2.4.3
 const bcryptjs = require('bcryptjs');
-
+// 3.安装并导入jwt的包npm i jsonwebtoken@8.5.1 (加密)
+const jwt = require('jsonwebtoken');
+// 4.导入全局配置文件
+const config = require('../config');
 
 // 注册用户Post
 regUser = (req, res) => {
     //获取客户端提交到服务器的信息
     const userinfo = req.body;
     // 对表单数据进行合法验证
-    if (!userinfo.username || !userinfo.password) {//表单提交要以键值对的方式提交
-        // return res.send({ status: 1, message: '用户名或密码不合法！' });
-      return  res.cc('用户名或密码不合法！');
-    }
+    // if (!userinfo.username || !userinfo.password) {//表单提交要以键值对的方式提交
+    //     // return res.send({ status: 1, message: '用户名或密码不合法！' });
+    //   return  res.cc('用户名或密码不合法！');
+    // }
 
+
+
+
+
+//注册模块
     // 判断用户名是否被使用
     //定义sql语句
     const sqlstr = 'select * from ev_users where username=?';
@@ -55,10 +63,41 @@ regUser = (req, res) => {
     })
 
 }
+//注册模块end
+
+
+
 
 //登陆用户
 login = (req, res) => {
-    res.send('登陆成功')
+    // 1.获取表单数据
+    const userinfo = req.body;
+    //定义sql语句，根据用户名查询用信息
+    const sqlSelect = 'select * from ev_users where username=?';
+    db.query(sqlSelect, userinfo.username, (err, results) => {
+        if (err) {
+            return res.cc('执行sql语句失败');
+        }
+        //如果查询的条数不为1
+        if (results.length !== 1) {
+            return res.cc('登陆失败！');
+        }
+        //用户名密码是否符合(使用插件中的方法进行判断)
+        const flag = bcryptjs.compareSync(userinfo.password, results[0].password);
+        if (!flag) return res.cc('登陆失败！');
+        // res.send('登陆成功');
+
+        // 用户的jwt认证剔除密码和头像的值
+        const user = { ...results[0], password: '', user_pic: '' };//...展开值进行修改值
+        //对用户信息进行加密，生成token字符串
+        const tokenstr = jwt.sign(user, config.secretKey, { expiresIn: config.expiresIn });
+        res.send({
+            status: 0,
+            message: '登陆成功！',
+            token:'Bearer '+tokenstr,//'Bearer '方便客户端的使用，后面的空格不能丢
+        })
+    })
+   
 }
 
 //共享两个函数

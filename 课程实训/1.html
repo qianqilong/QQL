@@ -12,8 +12,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+          
         }
-
+ body{
+     background-color: #f6f6f6;
+    
+ }
         li {
             list-style: none;
         }
@@ -36,16 +40,26 @@
 
         .nav>ul li {
             float: left;
+            position: relative;
             list-style: none;
             line-height: 47px;
             margin-left: 25px;
             color: #fff;
         }
-
+  
         .nav>ul li:nth-child(1) {
             margin-left: 170px;
         }
-
+/* 鼠标经过时触发小三角 */
+.nav>ul li:hover::after{
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            border: 6px solid white;
+            border-color: transparent transparent white transparent;
+    border-style: solid;
+        }
 
 
 
@@ -105,6 +119,117 @@
         .nav_con .item li:nth-child(1) {
             padding-left: 0;
         }
+
+        /* 主体模块 */
+        .main{   
+            float: right;
+            margin-right: 180px;
+            padding-top: 20px;
+            padding-left: 24px;
+          width: 900px;
+          height: 4000px;
+          background-color: aqua;
+          z-index: 2;
+        }
+     /* 显示代码 */
+.text_d{
+    position: relative;
+    width: 850px;
+    height: 280px;
+    padding-top: 30px;
+            padding-left: 8px;
+    background-color: #96b97d;
+}
+.text_d h3{
+    position: absolute;
+    top: 0px;
+    font-weight:400;
+}
+/* 按钮部分 */
+.text_d button{
+    position: absolute;
+    bottom: 10px;
+    height: 35px;
+    width: 80px;
+    background-color: orange;
+    border: none;
+    color: white;
+}
+/* 按钮后面的>>*/
+.text_d button::after{
+    content: '>>';
+}
+/* 固定遮罩层*/
+.text_d_cs{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+ /* 鼠标点击这一部分不会产生点击事件 */
+ /* 鼠标点击这一部分不会产生点击事件 */
+    transform: translate(-50%,-50%);
+    width: 1200px;
+    height: 590px;
+    border-radius: 5px;
+    background-color: #fff;
+  z-index: 1;
+}
+/* 遮罩层灰色效果 */
+.login-bg {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background: rgba(0, 0, 0, .3);
+        }
+/* 退出按钮 */
+.text_d_cs::after{
+    content: 'X';
+    position: absolute;
+    pointer-events: auto;
+    /*鼠标点击生效 */
+    top: 5px;
+    right: -30px;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 700;
+   
+}
+.text_left ,.text_right{
+    float: left;
+    width: 570px;
+    height: 550px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+.text_nav{
+    width:60px;
+    height: 100%;
+    background-color: #ccc;
+}
+.text_nav ul{
+   float: right;
+  margin-right: 20px;
+}
+.text_ne{
+    width: 830px;
+    height: 200px;
+    background-color: pink;
+}
+iframe{
+    width: 100%;
+    height: 100%;
+}
+
     </style>
 </head>
 
@@ -139,8 +264,9 @@
             <li></li>
             <li></li>
         </ul>
-
         </div>
+           <!-- 导航栏部分 -->
+  <!-- 水平导航模块 -->
         <div class="nav_con">
             <div class="item" style="display: block;">
                 <ul>
@@ -152,13 +278,27 @@
                     <li>6</li>
                 </ul>
             </div>
-
+           
     </nav>
-
-
     <!-- 水平导航模块 -->
 
+    <!-- 主体模块 -->
+<div class="main">
+ <div class="text_d">
+<h3>实例</h3>
+     <div class="text_ne"></div>
+    <a href="https://www.runoob.com/try/try.php?filename=tryhtml_intro" target="fm"> <button>尝试一下</button></a>
+ </div>
+</div>
+<!-- 尝试一下模块 -->
+<div class="text_d_cs">
+  <iframe name="fm" src="" frameborder="0"></iframe>
+</div>
 
+<!-- 尝试一下模块 -->
+     <!-- 主体模块 -->
+<!-- 遮盖层 -->
+<div id="bg" class="login-bg"></div>
     <script>
         var navigation = [
             {
@@ -362,11 +502,24 @@
             
             });
 
-
+         
 
 
         })
 
+
+
+        //获取尝试一下的按钮
+        $('.text_d button').on('click',function(){
+          //遮罩层部分显示出来
+          $('.text_d_cs').show();
+         $('#bg').show();
+        //   点击遮罩层的X号遮罩层消失 获取伪元素的方法(给父元素添加鼠标无法点击，伪元素添加可以点击)
+        $('.text_d_cs').on('click',function(){
+            $(this).hide();
+            $('#bg').hide();
+        })
+        })
     </script>
 </body>
 
